@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".Game">
 
+    <Button
+        android:id="@+id/logout"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="83dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="306dp"
+        android:layout_marginLeft="306dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="407dp"
+        android:text="Log Out"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/message"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
@@ -29,5 +47,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
+
+
 
 </android.support.constraint.ConstraintLayout>
