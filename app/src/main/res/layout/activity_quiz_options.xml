@@ -5,12 +5,19 @@
     android:orientation="vertical"
     android:gravity="center"
     >
+
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown" />
+
+    <CheckBox android:id="@+id/timerOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer?"
+        android:onClick="onCheckboxClicked"/>
     <Button
         android:id="@+id/playbtn"
         android:layout_width="wrap_content"
@@ -18,24 +25,13 @@
         android:layout_margin="10dp"
         android:text="Play" />
 
-    <Button
-        android:id="@+id/cqbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Custom Quizzes" />
 
-    <Button
-        android:id="@+id/reportbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Report Bugs" />
     <Button
         android:id="@+id/logoutbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Logout" />
+
 
 </LinearLayout>
