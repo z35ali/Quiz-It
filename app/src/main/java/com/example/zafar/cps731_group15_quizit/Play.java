@@ -23,7 +23,7 @@ public class Play extends AppCompatActivity {
         String categoryChoice= getIntent().getExtras().getString("category");
         category.setText(categoryChoice);
 
-        
+
         if (timerChoice) {
             timer.setText("Timer is true");
         }else{
