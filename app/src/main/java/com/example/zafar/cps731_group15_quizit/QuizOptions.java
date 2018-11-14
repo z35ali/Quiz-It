@@ -30,7 +30,7 @@ public class QuizOptions extends AppCompatActivity {
         dropdown.setAdapter(adapter);
         categoryChoice = dropdown.getSelectedItem().toString();
 
-        RadioButton radioButton = (RadioButton) findViewById(R.id.timerOption);
+
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
         playbtn = (Button) findViewById(R.id.playbtn);
 
