@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Play">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/timerTrue"
-        android:layout_width="wrap_content"
+        android:id="@+id/timeTV"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="16dp" />
 
+        android:text="Time Left:"
+        android:textSize="20sp" />
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/categoryTV"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="55dp" />
-</android.support.constraint.ConstraintLayout>
+
+        android:text="Category"
+        android:textSize="20sp" />
+
+
+
+
+
+
+</LinearLayout>
