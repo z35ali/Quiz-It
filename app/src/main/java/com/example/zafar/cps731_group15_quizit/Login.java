@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
 
     private EditText name;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         name=(EditText)findViewById(R.id.etName);
         password=(EditText)findViewById(R.id.etPassword);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, Game.class);
+                Intent intent= new Intent(Login.this, Game.class);
                 startActivity(intent);
 
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(MainActivity.this, SignUp.class);
+                Intent intent= new Intent(Login.this, SignUp.class);
                 startActivity(intent);
 
             }
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private void validate(String userName, String userPassword){
 
         if((userName.equals("admin")) && (userPassword.equals("1234"))){
-            Intent intent= new Intent(MainActivity.this, Game.class);
+            Intent intent= new Intent(Login.this, Game.class);
             startActivity(intent);
         }else{
             count--;
