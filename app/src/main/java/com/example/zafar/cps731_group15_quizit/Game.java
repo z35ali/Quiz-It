@@ -13,7 +13,8 @@ public class Game extends AppCompatActivity {
     private Button playbtn;
     private Button cqbtn;
     private Button reportbtn;
-    private Button purchasebtn;
+    private Button logoutbtn;
+
 
 
 
@@ -24,6 +25,7 @@ public class Game extends AppCompatActivity {
         playbtn=(Button)findViewById(R.id.playbtn);
         cqbtn=(Button)findViewById(R.id.cqbtn);
         reportbtn=(Button)findViewById(R.id.reportbtn);
+        logoutbtn=(Button)findViewById(R.id.logoutbtn);
 
 
 
@@ -50,6 +52,14 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(Game.this, CustomQuiz.class);
+                startActivity(intent);
+
+            }
+        });
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Game.this, Login.class);
                 startActivity(intent);
 
             }
