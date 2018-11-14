@@ -22,10 +22,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUp" />
-        <activity
-            android:name=".Game"
-            android:label="@string/title_activity_game" />
-
+        <activity android:name=".Game" />
+        <activity android:name=".Report" />
+        <activity android:name=".Hints" />
+        <activity android:name=".Play" />
+        <activity android:name=".CustomQuiz"></activity>
     </application>
 
 </manifest>
