@@ -24,7 +24,7 @@ public class Game extends AppCompatActivity {
         playbtn=(Button)findViewById(R.id.playbtn);
         cqbtn=(Button)findViewById(R.id.cqbtn);
         reportbtn=(Button)findViewById(R.id.reportbtn);
-        purchasebtn = (Button)findViewById(R.id.purchasebtn);
+       
 
 
 
@@ -37,14 +37,7 @@ public class Game extends AppCompatActivity {
             }
         });
 
-        purchasebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Game.this, Hints.class);
-                startActivity(intent);
 
-            }
-        });
         reportbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
