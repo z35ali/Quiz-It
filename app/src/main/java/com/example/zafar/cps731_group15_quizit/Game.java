@@ -24,7 +24,7 @@ public class Game extends AppCompatActivity {
         playbtn=(Button)findViewById(R.id.playbtn);
         cqbtn=(Button)findViewById(R.id.cqbtn);
         reportbtn=(Button)findViewById(R.id.reportbtn);
-       
+
 
 
 
