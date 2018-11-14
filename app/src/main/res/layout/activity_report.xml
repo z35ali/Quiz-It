@@ -5,20 +5,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/bugtv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:text="Report Your Bug Below:"
         android:textSize="20sp" />
+
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/bugDescription"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:hint="Description" />
