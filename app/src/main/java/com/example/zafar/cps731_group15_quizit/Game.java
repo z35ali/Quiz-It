@@ -33,7 +33,7 @@ public class Game extends AppCompatActivity {
         playbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Game.this, Play.class);
+                Intent intent= new Intent(Game.this, QuizOptions.class);
                 startActivity(intent);
 
             }
