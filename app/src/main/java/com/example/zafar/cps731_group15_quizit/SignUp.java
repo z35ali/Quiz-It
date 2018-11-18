@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 public class SignUp extends AppCompatActivity {
 
+    //Button and Textbox variables
     private EditText signUser1;
     private EditText signPass1;
     private EditText signPass2;
@@ -20,18 +21,21 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        //sets layout item to variable
         signUser1 = (EditText) findViewById(R.id.signuser);
         signPass1 = (EditText) findViewById(R.id.signpass1);
         signPass2 = (EditText) findViewById(R.id.signpass2);
         btnSignup1 = (Button)findViewById(R.id.btnsignup);
 
 
-
+        //onclick listener for signup submit button
        btnSignup1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-    validate(signPass1.getText().toString(),signPass2.getText().toString());
+        //calls validate method to check if two password fields are the same
+        validate(signPass1.getText().toString(),signPass2.getText().toString());
+
             }
         });
 
@@ -40,9 +44,11 @@ public class SignUp extends AppCompatActivity {
 
     private void validate(String pass1, String pass2){
 
+        //checks if passwords provided are the same
         if(pass1.equals(pass2)){
 
-            Intent intent= new Intent(SignUp.this, Game.class);
+            //changes activity from SignUp to login
+            Intent intent= new Intent(SignUp.this, Login.class);
             startActivity(intent);
 
         }
