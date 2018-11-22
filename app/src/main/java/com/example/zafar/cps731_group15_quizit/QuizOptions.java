@@ -16,6 +16,7 @@ public class QuizOptions extends AppCompatActivity {
 
     //category array that will be later replaced by SQL fetch
     private String[] dummyArray = {"Math", "Science", "Geography", "Movies", "MISC"};
+    private String[] difficultyArray = {"Easy", "Medium", "Hard"};
 
    //timer selection
     private boolean timerChoice = false;
@@ -25,9 +26,11 @@ public class QuizOptions extends AppCompatActivity {
     private Button playbtn;
     private CheckBox timer;
     Spinner dropdown;
-
+    Spinner difficulty;
     //chosen category from spinner gets saved in this variable
     private String categoryChoice = "";
+    private String difficultyChoice="";
+
 
 
 
@@ -68,6 +71,7 @@ public class QuizOptions extends AppCompatActivity {
                     Intent intent = new Intent(QuizOptions.this, Play.class);
                     intent.putExtra("timerChoice", true);
                     intent.putExtra("category",categoryChoice);
+                    intent.putExtra("difficulty",difficultyChoice);
                     startActivity(intent);
 
 
@@ -77,6 +81,7 @@ public class QuizOptions extends AppCompatActivity {
                     Intent intent = new Intent(QuizOptions.this, Play.class);
                     intent.putExtra("timerChoice", false);
                     intent.putExtra("category",categoryChoice);
+                    intent.putExtra("difficulty",difficultyChoice);
                     startActivity(intent);
                 }
 
@@ -111,7 +116,7 @@ public class QuizOptions extends AppCompatActivity {
             //Called when a spinner item is selected and stores the selection in categoryChoice
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                //use postion value
+                //use position value
 
                 switch (position)
 
@@ -162,5 +167,58 @@ public class QuizOptions extends AppCompatActivity {
         });
 
 
-        }
+
+        //sets spinner to the array
+        difficulty= findViewById(R.id.difficultySpinner);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, difficultyArray);
+        difficulty.setAdapter(adapter1);
+        difficulty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            //Called when a spinner item is selected and stores the selection in difficultyChoice
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //use position value
+
+                switch (position)
+
+                {
+
+                    case 0:
+
+                        difficultyChoice=difficultyArray[0];
+
+                        break;
+
+                    case 1:
+
+                        difficultyChoice = difficultyArray[1];
+
+                        break;
+
+                    case 2:
+
+                        difficultyChoice = difficultyArray[2];
+
+                        break;
+
+
+
+
+                }
+
+            }
+
+            @Override
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+
+
+
+    }
     }
