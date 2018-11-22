@@ -8,20 +8,71 @@
         android:id="@+id/timeTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text=""
+        android:textSize="20sp" />
 
-        android:text="Time Left:"
+    <TextView
+        android:id="@+id/scoreTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Score:"
+        android:layout_margin="10dp"
         android:textSize="20sp" />
     <TextView
         android:id="@+id/categoryTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:text="Category"
+        android:layout_margin="10dp"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/difficultyTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Difficulty"
+        android:layout_margin="10dp"
+        android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/questionTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
 
+    <EditText
+        android:id="@+id/answerET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Answer"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/submitAnswerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/hintTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hints will go down here"
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/logoutbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:text="Logout" />
 
 
 </LinearLayout>
