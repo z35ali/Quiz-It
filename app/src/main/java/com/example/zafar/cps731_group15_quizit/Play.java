@@ -1,8 +1,11 @@
 package com.example.zafar.cps731_group15_quizit;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.os.CountDownTimer;
@@ -15,6 +18,9 @@ public class Play extends AppCompatActivity {
     private TextView timer;
     private TextView category;
     private TextView difficulty;
+    private TextView scoreTV;
+    private Button logoutbtn;
+    private int score=0;
     long millis;
 
     @Override
@@ -23,9 +29,12 @@ public class Play extends AppCompatActivity {
         setContentView(R.layout.activity_play);
 
         //sets Layout variables to layout items
+        logoutbtn = (Button) findViewById(R.id.logoutbtn);
         timer=(TextView)findViewById(R.id.timeTV);
         category=(TextView)findViewById(R.id.categoryTV);
         difficulty=(TextView)findViewById(R.id.difficultyTV);
+        scoreTV=(TextView)findViewById(R.id.scoreTV);
+        scoreTV.setText("Score: "+score);
         //Gets the variables passed from the QuizOptions activity
         Boolean timerChoice= getIntent().getExtras().getBoolean("timerChoice");
         String categoryChoice= getIntent().getExtras().getString("category");
@@ -42,6 +51,18 @@ public class Play extends AppCompatActivity {
 
         difficulty.setText("Your Difficulty is: "+ difficultyChoice);
 
+
+        //onclick listener for logout button
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //changes activity from current to Login
+                Intent intent= new Intent(Play.this, Login.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void startTimer(final long finish, long tick){
@@ -61,7 +82,9 @@ public class Play extends AppCompatActivity {
             cancel();
         }
     }.start();
+
 }
+
 }
 
 

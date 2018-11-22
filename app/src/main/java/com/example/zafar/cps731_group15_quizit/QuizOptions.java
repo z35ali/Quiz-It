@@ -25,8 +25,10 @@ public class QuizOptions extends AppCompatActivity {
     private Button logoutbtn;
     private Button playbtn;
     private CheckBox timer;
-    Spinner dropdown;
-    Spinner difficulty;
+    private Spinner dropdown;
+    private Spinner difficulty;
+
+
     //chosen category from spinner gets saved in this variable
     private String categoryChoice = "";
     private String difficultyChoice="";
