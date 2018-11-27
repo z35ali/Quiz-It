@@ -92,12 +92,13 @@ public class Play extends AppCompatActivity {
 
 
     private void startGame(){
+        
         int count=0;
 
 
 
-        question.setText(questions.get(block.get(count)));
-        hintsTV.setText(questions.get(block.get(count)));
+       // question.setText(questions.get(block.get(count)));
+      //  hintsTV.setText(questions.get(block.get(count)));
     }
     private void startTimer(final long finish, long tick){
     CountDownTimer t;
