@@ -32,7 +32,6 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
         try{
             URL url = new URL("https://raw.githubusercontent.com/z35ali/cps731-group15-quizit/master/app/src/main/java/com/example/zafar/cps731_group15_quizit/Quizzes.json?token=AXLoVuhWfP5EdvQ9MztrJQ5RhsyCEHFmks5cBhIUwA%3D%3D");
            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
             InputStream in = new BufferedInputStream(httpURLConnection.getInputStream());
             BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(in));
             String line="";
@@ -53,14 +52,12 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
 
 
         } catch (MalformedURLException e) {
-            //bad  URL, tell the user
+
         } catch (JSONException e) {
-            //bad  URL, tell the user
+
         } catch (IOException e) {
-            //network error/ tell the user
-        } /*finally  {
-            client.disconnect();
-        }*/
+
+        }
         return null;
     }
 
