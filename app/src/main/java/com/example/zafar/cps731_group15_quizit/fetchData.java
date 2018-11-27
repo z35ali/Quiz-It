@@ -30,7 +30,7 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
 
 
         try{
-            URL url = new URL("https://api.myjson.com/bins/jf08a");
+            URL url = new URL("https://raw.githubusercontent.com/z35ali/cps731-group15-quizit/master/app/src/main/java/com/example/zafar/cps731_group15_quizit/Quizzes.json?token=AXLoVuhWfP5EdvQ9MztrJQ5RhsyCEHFmks5cBhIUwA%3D%3D");
            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
             InputStream in = new BufferedInputStream(httpURLConnection.getInputStream());
