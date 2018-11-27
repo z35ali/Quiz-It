@@ -14,7 +14,7 @@ public class Question {
         this.correct_index = correct_index;
     }
 
-    public String toString() { //just for testing
+    public String toString() {
         String out = ">> " + question_text + '\n';
         for (String s : answer_texts) {
             out += "> " + s + '\n';

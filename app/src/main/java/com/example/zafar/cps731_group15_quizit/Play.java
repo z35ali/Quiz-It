@@ -19,10 +19,12 @@ public class Play extends AppCompatActivity {
     public static TextView question;
     public static TextView category;
     public static TextView difficulty;
+    public static TextView pointsTV;
     private TextView scoreTV;
     private Button logoutbtn;
 
     private int score=0;
+    private int points=0;
     long millis;
 
     @Override
@@ -39,8 +41,12 @@ public class Play extends AppCompatActivity {
         category=(TextView)findViewById(R.id.categoryTV);
         question=(TextView)findViewById(R.id.questionTV);
         difficulty=(TextView)findViewById(R.id.difficultyTV);
+
         scoreTV=(TextView)findViewById(R.id.scoreTV);
         scoreTV.setText("Score: "+score);
+
+        pointsTV=(TextView)findViewById(R.id.pointsTV);
+        pointsTV.setText("Points: "+points);
         //Gets the variables passed from the QuizOptions activity
         Boolean timerChoice= getIntent().getExtras().getBoolean("timerChoice");
         String categoryChoice= getIntent().getExtras().getString("category");
