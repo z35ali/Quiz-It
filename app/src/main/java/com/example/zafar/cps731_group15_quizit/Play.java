@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.os.CountDownTimer;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class Play extends AppCompatActivity {
 
@@ -20,12 +22,20 @@ public class Play extends AppCompatActivity {
     public static TextView category;
     public static TextView difficulty;
     public static TextView pointsTV;
+    public static TextView hintsTV;
     private TextView scoreTV;
     private Button logoutbtn;
 
     private int score=0;
     private int points=0;
     long millis;
+
+    fetchData f = new fetchData();
+   private ArrayList<Integer> block;
+    private ArrayList<String> questions=f.getQuestions();
+    private ArrayList<String> answers=f.getAnswers();
+    private ArrayList<String> hints=f.getHints();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,7 @@ public class Play extends AppCompatActivity {
         category=(TextView)findViewById(R.id.categoryTV);
         question=(TextView)findViewById(R.id.questionTV);
         difficulty=(TextView)findViewById(R.id.difficultyTV);
+        hintsTV=(TextView)findViewById(R.id.hintTV);
 
         scoreTV=(TextView)findViewById(R.id.scoreTV);
         scoreTV.setText("Score: "+score);
@@ -51,6 +62,8 @@ public class Play extends AppCompatActivity {
         Boolean timerChoice= getIntent().getExtras().getBoolean("timerChoice");
         String categoryChoice= getIntent().getExtras().getString("category");
         String difficultyChoice= getIntent().getExtras().getString("difficulty");
+      block = f.getBlock(categoryChoice, difficultyChoice);
+      startGame();
 
         //Checker that the variables were passed
        // category.setText("Your Category is: " + categoryChoice);
@@ -78,6 +91,14 @@ public class Play extends AppCompatActivity {
     }
 
 
+    private void startGame(){
+        int count=0;
+
+
+
+        question.setText(questions.get(block.get(count)));
+        hintsTV.setText(questions.get(block.get(count)));
+    }
     private void startTimer(final long finish, long tick){
     CountDownTimer t;
     t = new CountDownTimer(finish, tick) {
