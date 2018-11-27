@@ -14,6 +14,12 @@ import android.widget.Spinner;
 
 public class QuizOptions extends AppCompatActivity {
 
+    public static String[] categories [];
+
+
+
+
+
     //category array that will be later replaced by SQL fetch
     private String[] dummyArray = {"Math", "Science", "Geography", "Movies", "MISC"};
     private String[] difficultyArray = {"Easy", "Medium", "Hard"};

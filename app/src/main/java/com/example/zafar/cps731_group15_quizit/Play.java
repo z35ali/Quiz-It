@@ -16,10 +16,12 @@ public class Play extends AppCompatActivity {
 
     //Layout variables
     private TextView timer;
-    private TextView category;
-    private TextView difficulty;
+    public static TextView question;
+    public static TextView category;
+    public static TextView difficulty;
     private TextView scoreTV;
     private Button logoutbtn;
+
     private int score=0;
     long millis;
 
@@ -28,10 +30,14 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
+        fetchData process= new fetchData();
+        process.execute();
+
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
         timer=(TextView)findViewById(R.id.timeTV);
         category=(TextView)findViewById(R.id.categoryTV);
+        question=(TextView)findViewById(R.id.questionTV);
         difficulty=(TextView)findViewById(R.id.difficultyTV);
         scoreTV=(TextView)findViewById(R.id.scoreTV);
         scoreTV.setText("Score: "+score);
@@ -41,7 +47,7 @@ public class Play extends AppCompatActivity {
         String difficultyChoice= getIntent().getExtras().getString("difficulty");
 
         //Checker that the variables were passed
-        category.setText("Your Category is: " + categoryChoice);
+       // category.setText("Your Category is: " + categoryChoice);
         if (timerChoice) {
             millis = 30000;
             startTimer(millis, 1000);
@@ -64,6 +70,7 @@ public class Play extends AppCompatActivity {
             }
         });
     }
+
 
     private void startTimer(final long finish, long tick){
     CountDownTimer t;
