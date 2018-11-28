@@ -15,28 +15,52 @@ public class FetchData {
 
     public ArrayList<Quiz> quizzes;
 
+
     public FetchData() {
         quizzes = new ArrayList<>();
     }
 
     public void fetchQuizzes() {
 
-        String txt = "";
+        String txt = "[{\n" +
+                "  \"category\": \"test\",\n" +
+                "  \"difficulty\": \"whatever\",\n" +
+                "  \"author\": \"whomever\",\n" +
+                "  \"name\": \"one of the best quizzes ever\",\n" +
+                "\n" +
+                "  \"questions\": [{\n" +
+                "    \"question\": \"what?\",\n" +
+                "    \"answer\": \"yes\",\n" +
+                "    \"hint\": \":^)\"\n" +
+                "  },\n" +
+                "    {\n" +
+                "      \"question\": \"what2?\",\n" +
+                "      \"answer\": \"yes2\",\n" +
+                "      \"hint\": \":^)2\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "},\n" +
+                "\n" +
+                "  {\n" +
+                "    \"category\": \"test\",\n" +
+                "    \"difficulty\": \"whatever\",\n" +
+                "    \"author\": \"whomever\",\n" +
+                "    \"name\": \"one of the best quizzes ever\",\n" +
+                "\n" +
+                "    \"questions\": [{\n" +
+                "      \"question\": \"what?\",\n" +
+                "      \"answer\": \"yes\",\n" +
+                "      \"hint\": \":^)\"\n" +
+                "    },\n" +
+                "      {\n" +
+                "        \"question\": \"what2?\",\n" +
+                "        \"answer\": \"yes2\",\n" +
+                "        \"hint\": \":^)2\"\n" +
+                "      }\n" +
+                "    ]\n" +
+                "  }\n" +
+                "]";
         String line = null;
-
-        try {
-            FileReader fileReader = new FileReader("Quizzes.json");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((line = bufferedReader.readLine()) != null) {
-                txt += line;
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("fnf");
-        } catch (IOException ex) {
-            System.out.println("ioe");
-        }
-
 
         Quiz current_quiz;
 
