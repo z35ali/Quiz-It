@@ -6,7 +6,7 @@ public class Quiz {
     public ArrayList<String> questions;
     public ArrayList<String> answers;
     public ArrayList<String> hints;
-    
+
     public String name;
     public String author;
     public String category;

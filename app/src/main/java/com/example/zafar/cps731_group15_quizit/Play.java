@@ -21,19 +21,30 @@ public class Play extends AppCompatActivity {
     public static TextView difficulty;
     public static TextView pointsTV;
     private TextView scoreTV;
+    private TextView answerET;
     private Button logoutbtn;
+    private Button submit;
+    private Button hintsSubmit;
+    private TextView hintsTV;
 
+    int quizCount=0;
+    int questionCount=0;
     private int score=0;
     private int points=0;
     long millis;
+    boolean timerChoice;
+    String categoryChoice;
+    String difficultyChoice;
+
+    FetchData fetch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        fetchData process= new fetchData();
-        process.execute();
+   fetch= new FetchData();
+        fetch.fetchQuizzes();
 
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
@@ -41,27 +52,25 @@ public class Play extends AppCompatActivity {
         category=(TextView)findViewById(R.id.categoryTV);
         question=(TextView)findViewById(R.id.questionTV);
         difficulty=(TextView)findViewById(R.id.difficultyTV);
+        answerET = (TextView)findViewById(R.id.answerET);
 
         scoreTV=(TextView)findViewById(R.id.scoreTV);
         scoreTV.setText("Score: "+score);
 
         pointsTV=(TextView)findViewById(R.id.pointsTV);
+        submit=(Button) findViewById(R.id.submitAnswerBtn);
+        hintsSubmit= (Button)findViewById(R.id.hintBtn);
+        hintsTV=(TextView)findViewById(R.id.hintTV);
         pointsTV.setText("Points: "+points);
         //Gets the variables passed from the QuizOptions activity
-        Boolean timerChoice= getIntent().getExtras().getBoolean("timerChoice");
-        String categoryChoice= getIntent().getExtras().getString("category");
-        String difficultyChoice= getIntent().getExtras().getString("difficulty");
+        timerChoice= getIntent().getExtras().getBoolean("timerChoice");
+       categoryChoice= getIntent().getExtras().getString("category");
+        difficultyChoice= getIntent().getExtras().getString("difficulty");
 
         //Checker that the variables were passed
        // category.setText("Your Category is: " + categoryChoice);
-        if (timerChoice) {
-            millis = 30000;
-            startTimer(millis, 1000);
-        }else{
 
-        }
 
-        difficulty.setText("Your Difficulty is: "+ difficultyChoice);
 
 
         //onclick listener for logout button
@@ -75,6 +84,64 @@ public class Play extends AppCompatActivity {
 
             }
         });
+
+
+
+        //onclick listener for submit button
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((fetch.quizzes.get(quizCount).answers).equals((answerET.getText().toString().toLowerCase()))){
+                    quizCount++;
+                    score++;
+                    points=score;
+
+                }
+
+
+            }
+        });
+
+        //onclick listener for hints button
+        hintsSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hintsTV.setText(fetch.quizzes.get(quizCount).hints.get(questionCount));
+
+
+            }
+        });
+        startGame();
+    }
+
+
+
+    public void startGame(){
+
+        question.setText(fetch.quizzes.get(quizCount).category);
+        /*while(questionCount<fetch.quizzes.get(quizCount).questions.size()){
+            question.setText(fetch.quizzes.get(quizCount).questions.get(questionCount));
+            difficulty.setText(fetch.quizzes.get(quizCount).difficulty);
+            category.setText(fetch.quizzes.get(quizCount).category);
+            scoreTV.setText(score);
+            pointsTV.setText(points);
+
+            if (timerChoice) {
+                millis = 30000;
+                startTimer(millis, 1000);
+            }
+
+            if(millis==0.0){
+                millis = 30000;
+                score=score-1;
+                points=score;
+                questionCount++;
+            }
+
+
+
+
+        }*/
     }
 
 
