@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class fetchData extends AsyncTask<Void,Void,Void> {
 
     String data="";
-  //public String questions="";
+  public String questions1="";
    private ArrayList <String> questions= new ArrayList<String>();
     private ArrayList <String> categories= new ArrayList<String>();
     private ArrayList <String> difficulties= new ArrayList<String>();
     private ArrayList <String> answers= new ArrayList<String>();
-    private ArrayList <Integer> block = new ArrayList <Integer>();
+    public ArrayList <Integer> block = new ArrayList <Integer>();
     private ArrayList <String> hints= new ArrayList<String>();
     @Override
     protected Void doInBackground(Void... voids) {
@@ -70,9 +70,9 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-    Play.question.setText(""+questions.get(1));
-    Play.category.setText(""+categories.get(1));
-    Play.difficulty.setText(""+difficulties.get(1));
+
+    //Play.category.setText(""+categories.get(1));
+    //Play.difficulty.setText(""+difficulties.get(1));
 
     }
 
@@ -91,14 +91,18 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
 
 
 
-    public ArrayList<Integer> getBlock(String category, String difficulty) {
+    public void setBlock(String category, String difficulty) {
+        block.add(0);
+        Play.category.setText(""+category);
         for (int i = 0; i <  categories.size(); i++) {
+            System.out.println(i);
+
             if(categories.get(i).equals(category)){
                 if(difficulties.get(i).equals(difficulty)){
                     block.add(i);
                 }
         }
     }
-    return block;
+
 }
 }

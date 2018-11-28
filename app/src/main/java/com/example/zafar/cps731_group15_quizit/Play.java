@@ -18,11 +18,11 @@ public class Play extends AppCompatActivity {
 
     //Layout variables
     private TextView timer;
-    public static TextView question;
+    public TextView question;
     public static TextView category;
-    public static TextView difficulty;
-    public static TextView pointsTV;
-    public static TextView hintsTV;
+    public TextView difficulty;
+    public TextView pointsTV;
+    public TextView hintsTV;
     private TextView scoreTV;
     private Button logoutbtn;
 
@@ -30,20 +30,20 @@ public class Play extends AppCompatActivity {
     private int points=0;
     long millis;
 
-    fetchData f = new fetchData();
-   private ArrayList<Integer> block;
-    private ArrayList<String> questions=f.getQuestions();
-    private ArrayList<String> answers=f.getAnswers();
-    private ArrayList<String> hints=f.getHints();
+    public boolean timerChoice;
+    public String categoryChoice;
+  public  String difficultyChoice;
 
+  public static ArrayList <Integer> block= new ArrayList <Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-
         fetchData process= new fetchData();
         process.execute();
+
+
 
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
@@ -59,14 +59,13 @@ public class Play extends AppCompatActivity {
         pointsTV=(TextView)findViewById(R.id.pointsTV);
         pointsTV.setText("Points: "+points);
         //Gets the variables passed from the QuizOptions activity
-        Boolean timerChoice= getIntent().getExtras().getBoolean("timerChoice");
-        String categoryChoice= getIntent().getExtras().getString("category");
-        String difficultyChoice= getIntent().getExtras().getString("difficulty");
-      block = f.getBlock(categoryChoice, difficultyChoice);
-      startGame();
+         timerChoice= getIntent().getExtras().getBoolean("timerChoice");
+         categoryChoice= getIntent().getExtras().getString("category");
+        difficultyChoice= getIntent().getExtras().getString("difficulty");
+       process.setBlock(categoryChoice, difficultyChoice);
 
         //Checker that the variables were passed
-       // category.setText("Your Category is: " + categoryChoice);
+       question.setText(""+process.block.get(0));
         if (timerChoice) {
             millis = 30000;
             startTimer(millis, 1000);
@@ -74,7 +73,7 @@ public class Play extends AppCompatActivity {
 
         }
 
-        difficulty.setText("Your Difficulty is: "+ difficultyChoice);
+     //   difficulty.setText("Your Difficulty is: "+ process.block.get(0));
 
 
         //onclick listener for logout button
@@ -91,15 +90,7 @@ public class Play extends AppCompatActivity {
     }
 
 
-    private void startGame(){
-        
-        int count=0;
 
-
-
-       // question.setText(questions.get(block.get(count)));
-      //  hintsTV.setText(questions.get(block.get(count)));
-    }
     private void startTimer(final long finish, long tick){
     CountDownTimer t;
     t = new CountDownTimer(finish, tick) {
