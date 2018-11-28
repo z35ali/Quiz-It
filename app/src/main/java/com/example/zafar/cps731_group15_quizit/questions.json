@@ -1,0 +1,218 @@
+[
+	{
+        "category": "Math",
+        "difficulty": "Easy",
+        "author": "admin",
+        "name": "Easy Math Quiz",
+        "questions":
+		[
+			{
+                "question": "What is 9-5?",
+                "answer": "4",
+                "hint": "Between 2 and 5."
+            },
+            {
+                "question": "What is 2+9?",
+                "answer": "11",
+                "hint": "Between 10 and 15."
+            }, 
+			{
+                "question": "What is 30-12?",
+                "answer": "18",
+                "hint": "Between 15 and 20."
+            }
+        ]
+    },
+    {
+        "category": "Math",
+        "difficulty": "Medium",
+        "author": "admin",
+        "name": "Medium Math Quiz",
+        "questions": 
+		[
+			{
+                "question": "What is 8*6?",
+                "answer": "54",
+                "hint": "Between 50 and 60."
+            },
+            {
+                "question": "What is 9*7?",
+                "answer": "63",
+                "hint": "Between 60 and 70."
+            },
+			{
+                "question": "What is 20/5?",
+                "answer": "4",
+                "hint": "An even number."
+            }
+        ]
+    },
+	{
+        "category": "Math",
+        "difficulty": "Hard",
+        "author": "admin",
+        "name": "Hard Math Quiz",
+        "questions":
+		[
+			{
+                "question": "What is 9^9?",
+                "answer": "81",
+                "hint": "Between 80 and 100."
+            },
+            {
+                "question": "What is 11^9",
+                "answer": "99",
+                "hint": "Between 90 and 100."
+            },
+			{
+                "question": "What is 5 * 5^2",
+                "answer": "125",
+                "hint": "Around 125..."
+            }
+        ]
+    },
+	{
+        "category": "Geography",
+        "difficulty": "Easy",
+        "author": "admin",
+        "name": "Easy Geography Quiz",
+        "questions":
+		[
+			{
+                "question": "How many continents are there?",
+                "answer": "7",
+                "hint": "Bigger than 5."
+            },
+            {
+                "question": "What is bigger Canada or Mexico?",
+                "answer": "Canada",
+                "hint": "Not the southern country."
+            }, 
+			{
+                "question": "What continent is Australia in?",
+                "answer": "Oceania",
+                "hint": "Ocean Start"
+            }
+        ]
+    },
+    {
+        "category": "Geography",
+        "difficulty": "Medium",
+        "author": "admin",
+        "name": "Medium Geography Quiz",
+        "questions": 
+		[
+			{
+                "question": "What is the capital of Canada?",
+                "answer": "Ottawa",
+                "hint": "Starts with O"
+            },
+            {
+                "question": "Where is Madrid located?",
+                "answer": "Spain",
+                "hint": "_ + Pain"
+            },
+			{
+                "question": "What is the biggest country in the world?",
+                "answer": "Russia",
+                "hint": "People have bears as pets."
+            }
+        ]
+    },
+	{
+        "category": "Geography",
+        "difficulty": "Hard",
+        "author": "Admin",
+        "name": "Hard Geography Quiz",
+        "questions":
+		[
+			{
+                "question": "What is the smallest country in the world?",
+                "answer": "Vatican City",
+                "hint": "It is a city-state."
+            },
+            {
+                "question": "What city-state is in the south of France?",
+                "answer": "Monaco",
+                "hint": "Has a Formula 1 race that is popular held here."
+            },
+			{
+                "question": "What country is to the right of Norway?",
+                "answer": "Sweden",
+                "hint": "Flag colors are blue and yellow."
+            }
+        ]
+    },
+	{
+        "category": "Science",
+        "difficulty": "Easy",
+        "author": "admin",
+        "name": "Easy Science Quiz",
+        "questions":
+		[
+			{
+                "question": "What is the chemical symbol for the element oxygen?",
+                "answer": "O",
+                "hint": "More circle than a 0."
+            },
+            {
+                "question": "Is the Earth flat or round?",
+                "answer": "Round",
+                "hint": "not __"
+            }, 
+			{
+                "question": "How many colours are there in a rainbow?",
+                "answer": "7",
+                "hint": "4 + Primarys"
+            }
+        ]
+    },
+    {
+        "category": "Science",
+        "difficulty": "Medium",
+        "author": "admin",
+        "name": "Medium Science Quiz",
+        "questions": 
+		[
+			{
+                "question": "What is the hardest substance on earth?",
+                "answer": "Diamond",
+                "hint": "Pressure makes..."
+            },
+            {
+                "question": "What planet is refered to as the 'Red Planet'?",
+                "answer": "Mars",
+                "hint": "4th Planet"
+            },
+			{
+                "question": "How many billions of years old (to 1 decimal) is the earth?",
+                "answer": "4.5 Billion",
+                "hint": "Between 4 and 6 billion."
+            }
+        ]
+    },
+	{
+        "category": "Science",
+        "difficulty": "Hard",
+        "author": "Admin",
+        "name": "Hard Science Quiz",
+        "questions":
+		[
+			{
+                "question": "What percentage of the Earth is made up on water?",
+                "answer": "71",
+                "hint": "A little less than 3/4s."
+            },
+            {
+                "question": "What is the heaviest planet?",
+                "answer": "Jupiter",
+                "hint": "Earth + 2"
+            },
+			{
+                "question": "What was Thomas Edison's most famous invention?",
+                "answer": "Light Bulb",
+                "hint": "Glows"
+            }
+        ]
+    }
+]
