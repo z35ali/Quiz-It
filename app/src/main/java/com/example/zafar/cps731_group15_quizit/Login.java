@@ -30,9 +30,9 @@ public class Login extends AppCompatActivity {
     //variable to keep track of login attempts
     private int count=5;
 
-        public ArrayList <String> username = new ArrayList<>();
-        public ArrayList <String> pass= new ArrayList<>();
-        public ArrayList <Integer> points= new ArrayList<>();
+        public static ArrayList <String> username = new ArrayList<>();
+        public static ArrayList <String> pass= new ArrayList<>();
+        public static ArrayList <Integer> points= new ArrayList<>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,6 @@ public class Login extends AppCompatActivity {
         btnskip=(Button)findViewById(R.id.btnskip);
 
 
-     username.add("admin");
-     pass.add("1234");
-     points.add(99999);
 
 
 
@@ -88,7 +85,9 @@ public class Login extends AppCompatActivity {
 
 
         }catch ( NullPointerException e) {
-
+                    username.add("admin");
+                    pass.add("1234");
+                    points.add(99999);
         }
 
 
