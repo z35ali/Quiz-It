@@ -149,16 +149,19 @@ public class Play extends AppCompatActivity {
         hintsSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (difficultyChoice.equals("Custom")) {
+                    Toast.makeText(Play.this, "CUSTOM QUIZZES DO NOT HAVE HINTS", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (points > 0) {
+                        points -= 5;
+                        hintsTV.setText(fetch.quizzes.get(quizCount).hints.get(questionCount));
+                        pointsTV.setText("Points: " + points);
+                    } else {
+                        Toast.makeText(Play.this, "YOU HAVE NO POINTS", Toast.LENGTH_SHORT).show();
+                        pointsTV.setText("Points: " + points);
+                    }
 
-                if(points>0) {
-                    points -= 5;
-                    hintsTV.setText(fetch.quizzes.get(quizCount).hints.get(questionCount));
-                    pointsTV.setText("Points: "+points);
-                }else{
-                    Toast.makeText(Play.this, "YOU HAVE NO POINTS", Toast.LENGTH_SHORT).show();
-                    pointsTV.setText("Points: "+points);
                 }
-
             }
 
         });
