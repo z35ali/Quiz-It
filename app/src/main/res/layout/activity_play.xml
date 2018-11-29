@@ -75,9 +75,14 @@
         android:id="@+id/answerET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Answer"
         android:layout_below="@+id/questionTV"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Answer"
         android:textSize="20sp" />
 
     <Button
@@ -104,6 +109,7 @@
         android:layout_marginTop="61dp"
         android:layout_toRightOf="@+id/submitAnswerBtn"
         android:text="Hints?" />
+
     <TextView
         android:id="@+id/hintTV"
         android:layout_width="match_parent"
@@ -112,7 +118,6 @@
 
         android:layout_marginTop="27dp"
         android:gravity="center_horizontal"
-        android:text="Hints will go down here"
         android:textSize="20sp" />
 
     <Button

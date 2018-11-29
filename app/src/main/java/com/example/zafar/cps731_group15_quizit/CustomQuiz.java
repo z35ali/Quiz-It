@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import org.json.JSONObject;
+
 public class CustomQuiz extends AppCompatActivity {
 
     //category array that will be later replaced by SQL fetch
@@ -33,6 +35,13 @@ public class CustomQuiz extends AppCompatActivity {
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+
+           /* public void createJSON() {
+                Quiz quizObject = new Quiz();
+
+                JSONObject quiz = new JSONObject();
+                quiz
+            } */
 
             //Called when a spinner item is selected and stores the selection in categoryChoice
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

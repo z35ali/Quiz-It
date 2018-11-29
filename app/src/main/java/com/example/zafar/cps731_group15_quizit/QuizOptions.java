@@ -21,7 +21,7 @@ public class QuizOptions extends AppCompatActivity {
 
 
     //category array that will be later replaced by SQL fetch
-    private String[] dummyArray = {"Math", "Science", "Geography", "Movies", "MISC"};
+    private String[] dummyArray = {"Math", "Science", "Geography"};
     private String[] difficultyArray = {"Easy", "Medium", "Hard"};
 
    //timer selection

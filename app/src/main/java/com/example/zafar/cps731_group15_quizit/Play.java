@@ -99,26 +99,24 @@ public class Play extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if((fetch.quizzes.get(quizCount).answers.get(0)).equals((answerET.getText().toString().toLowerCase()))){
+                String answer = answerET.getText().toString().toLowerCase();
+                String quizAnswer = fetch.quizzes.get(quizCount).answers.get(questionCount).toLowerCase();
+                if(answer.equals(quizAnswer)){
 
 
 
 
                   score++;
-                  points=score;
-                  questionCount++;
-                  changeQuestion();
-
-
-                }else{
-                  questionCount++;
-                  changeQuestion();
+                    points=points+5;
+                }
+                else{
                   score--;
-                  points=score;
+                    points=points-5;
               }
 
-
+              questionCount++;
+                millis = 10000;
+                changeQuestion();
             }
         });
 
@@ -126,10 +124,18 @@ public class Play extends AppCompatActivity {
         hintsSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hintsTV.setText(fetch.quizzes.get(quizCount).hints.get(questionCount));
 
+                if(points>0) {
+                    points -= 5;
+                    hintsTV.setText(fetch.quizzes.get(quizCount).hints.get(questionCount));
+                    pointsTV.setText("Points: "+points);
+                }else{
+                    Toast.makeText(Play.this, "YOU HAVE NO POINTS", Toast.LENGTH_SHORT).show();
+                    pointsTV.setText("Points: "+points);
+                }
 
             }
+
         });
 
     }
@@ -152,31 +158,42 @@ public class Play extends AppCompatActivity {
     public void changeQuestion(){
 
 
+            if(questionCount < fetch.quizzes.get(quizCount).questions.size()) {
+                question.setText(fetch.quizzes.get(quizCount).questions.get(questionCount));
 
-           question.setText(fetch.quizzes.get(quizCount).questions.get(0));
-/*
-            difficulty.setText(currentQuiz.difficulty);
-            category.setText(currentQuiz.category);
-            scoreTV.setText("Score: "+score);
-           pointsTV.setText("Points: "+points); */
-       // timer.setText("Time Left: " + millis);// manage it according to you
+                category.setText("Category: "+fetch.quizzes.get(quizCount).category);
+                difficulty.setText("Difficulties: "+fetch.quizzes.get(quizCount).difficulty);
+                scoreTV.setText("Score: " + score);
+                pointsTV.setText("Points: " + points);
+                // timer.setText("Time Left: " + millis);// manage it according to you
 
 
             if (timerChoice) {
-                millis = 30000;
+                millis = 10000;
                 startTimer(millis, 1000);
             }
 
-            if(millis==0.0){
-                millis = 30000;
-                score=score-1;
-                points=score;
-                questionCount++;
+
+
             }
+            else{
+
+                    question.setText("");
+                    hintsTV.setText("Your Score is: "+score);
+                    difficulty.setText(" ");
+                    category.setText(" ");
+                    scoreTV.setText(" ");
+                    pointsTV.setText(" ");
+                    timer.setText(" ");
+
+
+                    submit.setVisibility(View.GONE);
+                    hintsSubmit.setVisibility(View.GONE);
+                    answerET.setVisibility(View.GONE);
 
 
 
-
+            }
     }
 
 
@@ -193,6 +210,13 @@ public class Play extends AppCompatActivity {
         public void onFinish() {
             timer.setText("00:00:00");
             Toast.makeText(Play.this, "Finish", Toast.LENGTH_SHORT).show();
+
+                millis = 10000;
+                score=score-1;
+                points=points-5;
+                questionCount++;
+                changeQuestion();
+
 
             cancel();
         }
