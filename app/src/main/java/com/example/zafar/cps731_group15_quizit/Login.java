@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Login extends AppCompatActivity {
@@ -20,16 +22,21 @@ public class Login extends AppCompatActivity {
     private Button login;
     private Button signup;
     private Button btnskip;
-
+    private boolean userFound=false;
+    private boolean passFound=false;
+   public  SignUp sign;
     //variable to keep track of login attempts
     private int count=5;
 
+        public ArrayList <String> username = new ArrayList<>();
+        public ArrayList <String> pass= new ArrayList<>();
+        public ArrayList <Integer> points= new ArrayList<>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        sign= new SignUp();
         //sets layout variables to layout items in xml
         name=(EditText)findViewById(R.id.etName);
         password=(EditText)findViewById(R.id.etPassword);
@@ -38,8 +45,20 @@ public class Login extends AppCompatActivity {
         info.setText("No of attempts remaining: 5");
         signup= (Button)findViewById(R.id.btnsignup);
         btnskip=(Button)findViewById(R.id.btnskip);
+        username.add("admin");
+        pass.add("1234");
+        points.add(9999);
 
 
+        try {
+            if (getIntent().getExtras().getBoolean("dataSent")) {
+                username.add(getIntent().getExtras().getString("username1"));
+                pass.add(getIntent().getExtras().getString("password1"));
+                points.add(0);
+            }
+        }catch ( NullPointerException e) {
+
+            }
         //onclick listener for login button
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,10 +101,23 @@ public class Login extends AppCompatActivity {
     private void validate(String userName, String userPassword){
 
         //checks if admin credentials are correct
-        if((userName.equals("admin")) && (userPassword.equals("1234"))){
-            Intent intent= new Intent(Login.this, Game.class);
+        for(String user: username) {
+            if (userName.equals(user)) {
+                userFound = true;
+            }
+        }
+
+        for(String pass1: pass) {
+            if (userPassword.equals(pass1)) {
+                passFound = true;
+            }
+        }
+
+        if(userFound&&passFound) {
+            Intent intent = new Intent(Login.this, Game.class);
             startActivity(intent);
-        }else{
+        }
+        else{
 
             //decrease number of attemps remaining
             count--;

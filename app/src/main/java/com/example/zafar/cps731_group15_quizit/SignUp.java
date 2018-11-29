@@ -15,7 +15,8 @@ public class SignUp extends AppCompatActivity {
     private EditText signPass1;
     private EditText signPass2;
     private Button btnSignup1;
-
+    public boolean dataSent=false;
+    Login login = new Login();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
         //calls validate method to check if two password fields are the same
-        validate(signPass1.getText().toString(),signPass2.getText().toString());
+        validate(signUser1.getText().toString(),signPass1.getText().toString(),signPass2.getText().toString());
 
             }
         });
@@ -42,14 +43,20 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-    private void validate(String pass1, String pass2){
+    private void validate(String username, String pass1, String pass2){
 
         //checks if passwords provided are the same
         if(pass1.equals(pass2)){
-
-            //changes activity from SignUp to login
-            Intent intent= new Intent(SignUp.this, Login.class);
+        dataSent=true;
+            Intent intent = new Intent(SignUp.this, Login.class);
+            intent.putExtra("username1", username);
+            intent.putExtra("password1",pass1);
+           intent.putExtra("dataSent",true);
             startActivity(intent);
+
+
+
+
 
         }
 
