@@ -44,6 +44,7 @@ public class QuizOptions extends AppCompatActivity {
 
     public String username;
     public int points;
+    public String password;
 
 
 
@@ -65,6 +66,7 @@ public class QuizOptions extends AppCompatActivity {
 
         username=(getIntent().getExtras().getString("username"));
         points=(getIntent().getExtras().getInt("points"));
+        password=(getIntent().getExtras().getString("password"));
 
         pointsText.setText(""+points);
         usernameText.setText(username);
@@ -94,6 +96,7 @@ public class QuizOptions extends AppCompatActivity {
                     intent.putExtra("category",categoryChoice);
                     intent.putExtra("difficulty",difficultyChoice);
                     intent.putExtra("username",username);
+                    intent.putExtra("password",password);
                     intent.putExtra("points",points);
                     startActivity(intent);
 
@@ -106,6 +109,7 @@ public class QuizOptions extends AppCompatActivity {
                     intent.putExtra("category",categoryChoice);
                     intent.putExtra("difficulty",difficultyChoice);
                     intent.putExtra("username",username);
+                    intent.putExtra("password",password);
                     intent.putExtra("points",points);
                     startActivity(intent);
                 }

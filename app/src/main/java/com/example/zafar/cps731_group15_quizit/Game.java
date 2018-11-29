@@ -18,6 +18,7 @@ public class Game extends AppCompatActivity {
     private Button reportbtn;
     private Button logoutbtn;
     private String username;
+    private String password;
 
     private TextView usernameText;
     private TextView pointsText;
@@ -41,6 +42,7 @@ public class Game extends AppCompatActivity {
 
        username=(getIntent().getExtras().getString("username"));
         points=(getIntent().getExtras().getInt("points"));
+        password=(getIntent().getExtras().getString("password"));
 
         pointsText.setText(""+points);
         usernameText.setText(username);
@@ -52,7 +54,7 @@ public class Game extends AppCompatActivity {
                 //changes activity from current to QuizOptions
                 Intent intent= new Intent(Game.this, QuizOptions.class);
                 intent.putExtra("username", username);
-
+                intent.putExtra("password",password);
                 intent.putExtra("points",points);
                 startActivity(intent);
 

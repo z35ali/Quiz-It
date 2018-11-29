@@ -32,7 +32,7 @@ public class Play extends AppCompatActivity {
     public int index;
     public boolean found=false;
     public String username;
-
+    public String password;
 
     CountDownTimer t;
 
@@ -65,7 +65,7 @@ public class Play extends AppCompatActivity {
 
         username=(getIntent().getExtras().getString("username"));
         points=(getIntent().getExtras().getInt("points"));
-
+        password=(getIntent().getExtras().getString("password"));
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
         timer=(TextView)findViewById(R.id.timeTV);
@@ -102,6 +102,10 @@ public class Play extends AppCompatActivity {
 
                 //changes activity from current to Login
                 Intent intent= new Intent(Play.this, Login.class);
+                intent.putExtra("usernameFromPlay",username);
+                intent.putExtra("pointsFromPlay",points);
+                intent.putExtra("loggedOut",true);
+                intent.putExtra("passwordFromPlay",password);
                 startActivity(intent);
 
             }
