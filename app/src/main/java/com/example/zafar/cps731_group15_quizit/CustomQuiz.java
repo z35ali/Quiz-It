@@ -11,11 +11,15 @@ import android.widget.Spinner;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class CustomQuiz extends AppCompatActivity {
 
     //category array that will be later replaced by SQL fetch
-    private String[] dummyArray = {"Math", "Science", "Geography", "Movies", "MISC"};
-    private String[] difficultyArray = {"Easy", "Medium", "Hard"};
+
+    public ArrayList<Quiz> customQuizzes;
+    private String[] dummyArray = {"Math", "Science", "Geography"};
+
     private Button logoutbtn;
     private Spinner dropdown;
     private Spinner difficulty;
@@ -27,6 +31,7 @@ public class CustomQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_quiz);
 
+
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
 
         //sets spinner to the array
@@ -34,9 +39,17 @@ public class CustomQuiz extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dummyArray);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+/*
+createQuiz () {
+    Quiz q = new Quiz();
+    q.questions.add("Question 1");
+    q.answers.add("Answer 1");
+    customQuizzes.add(q);
+    FetchData fetchData = new FetchData();
+    customQuizzes = fetchData.customQuizzes;
 
-
-           /* public void createJSON() {
+}
+    */       /* public void createJSON() {
                 Quiz quizObject = new Quiz();
 
                 JSONObject quiz = new JSONObject();
@@ -97,55 +110,6 @@ public class CustomQuiz extends AppCompatActivity {
         });
 
 
-
-        //sets spinner to the array
-        difficulty= findViewById(R.id.difficultySpinner);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, difficultyArray);
-        difficulty.setAdapter(adapter1);
-        difficulty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            //Called when a spinner item is selected and stores the selection in difficultyChoice
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //use position value
-
-                switch (position)
-
-                {
-
-                    case 0:
-
-                        difficultyChoice=difficultyArray[0];
-
-                        break;
-
-                    case 1:
-
-                        difficultyChoice = difficultyArray[1];
-
-                        break;
-
-                    case 2:
-
-                        difficultyChoice = difficultyArray[2];
-
-                        break;
-
-
-
-
-                }
-
-            }
-
-            @Override
-
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-        });
 
 
         //onclick listener for logout button

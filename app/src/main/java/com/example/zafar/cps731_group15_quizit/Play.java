@@ -30,6 +30,7 @@ public class Play extends AppCompatActivity {
     private TextView hintsTV;
     public int index;
 
+    CountDownTimer t;
 
     int quizCount=0;
     int questionCount=0;
@@ -113,9 +114,10 @@ public class Play extends AppCompatActivity {
                   score--;
                     points=points-5;
               }
-
+                t.cancel();
               questionCount++;
-                millis = 10000;
+               millis=10000;
+                answerET.setText("");
                 changeQuestion();
             }
         });
@@ -152,10 +154,16 @@ public class Play extends AppCompatActivity {
 
                 }
             }
+/*
+            if (cat.equals("custom")) {
+                customQuizcount = 1;
+            } */
+
         }
 
 
     public void changeQuestion(){
+
 
 
             if(questionCount < fetch.quizzes.get(quizCount).questions.size()) {
@@ -166,12 +174,11 @@ public class Play extends AppCompatActivity {
                 scoreTV.setText("Score: " + score);
                 pointsTV.setText("Points: " + points);
                 // timer.setText("Time Left: " + millis);// manage it according to you
+                if (timerChoice) {
+                    millis = 10000;
+                    startTimer(millis, 1000);
+                }
 
-
-            if (timerChoice) {
-                millis = 10000;
-                startTimer(millis, 1000);
-            }
 
 
 
@@ -198,7 +205,7 @@ public class Play extends AppCompatActivity {
 
 
     private void startTimer(final long finish, long tick){
-    CountDownTimer t;
+
     t = new CountDownTimer(finish, tick) {
 
 
