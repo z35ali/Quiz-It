@@ -12,6 +12,7 @@ import android.os.CountDownTimer;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Play extends AppCompatActivity {
@@ -181,16 +182,23 @@ public class Play extends AppCompatActivity {
             }
         }
 
-
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
         for (Quiz p: customQuizzes) {
             if(p.category.equals(cat)) {
 
-                customQuizCount = customQuizzes.indexOf(p);
-            found=true;
-                changeQuestion();
 
+                found=true;
+
+                indexes.add(customQuizzes.indexOf(p));
             }
             }
+            if(found&&difficultyChoice.equals("Custom")){
+            Random rand = new Random();
+            Integer randomInt = indexes.get(rand.nextInt(indexes.size()));
+
+                customQuizCount= randomInt;
+                changeQuestion();
+        }
             if(!found&&difficultyChoice.equals("Custom")){
             customQuizCount=-1;
                 Intent intent= new Intent(Play.this, QuizOptions.class);
