@@ -14,10 +14,11 @@ import org.json.JSONObject;
 public class FetchData {
 
     public ArrayList<Quiz> quizzes;
-    public ArrayList<Quiz> customQuizzes;
+
 
     public FetchData() {
         quizzes = new ArrayList<>();
+
     }
 
     public void fetchQuizzes() {

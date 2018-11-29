@@ -10,7 +10,6 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="right"
 
-        android:text="Timer"
         android:textSize="20sp" />
 
     <TextView

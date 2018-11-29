@@ -22,7 +22,7 @@ public class QuizOptions extends AppCompatActivity {
 
     //category array that will be later replaced by SQL fetch
     private String[] dummyArray = {"Math", "Science", "Geography"};
-    private String[] difficultyArray = {"Easy", "Medium", "Hard"};
+    private String[] difficultyArray = {"Easy", "Medium", "Hard", "Custom"};
 
    //timer selection
     private boolean timerChoice = false;
@@ -154,11 +154,6 @@ public class QuizOptions extends AppCompatActivity {
 
                         break;
 
-                    case 4:
-
-                        categoryChoice = dummyArray[4];
-
-                        break;
 
 
 
@@ -210,6 +205,11 @@ public class QuizOptions extends AppCompatActivity {
 
                         break;
 
+                    case 3:
+
+                        difficultyChoice = difficultyArray[3];
+
+                        break;
 
 
 

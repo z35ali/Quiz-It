@@ -29,11 +29,13 @@ public class Play extends AppCompatActivity {
     private Button hintsSubmit;
     private TextView hintsTV;
     public int index;
+    public boolean found=false;
 
     CountDownTimer t;
 
-    int quizCount=0;
-    int questionCount=0;
+    int quizCount;
+    int questionCount;
+    int customQuestionCount;
     int score=0;
     private int points=0;
     long millis;
@@ -41,13 +43,19 @@ public class Play extends AppCompatActivity {
     String categoryChoice;
     String difficultyChoice;
     Quiz currentQuiz;
+    int customQuizCount;
 
     FetchData fetch;
+    CustomQuiz cq;
+
+
+    public static ArrayList <Quiz> customQuizzes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+
 
         fetch= new FetchData();
         fetch.fetchQuizzes();
@@ -75,7 +83,7 @@ public class Play extends AppCompatActivity {
         difficultyChoice= getIntent().getExtras().getString("difficulty");
 
         fetchQuiz(categoryChoice, difficultyChoice);
-        changeQuestion();
+
         //Checker that the variables were passed
        // category.setText("Your Category is: " + categoryChoice);
 
@@ -100,25 +108,40 @@ public class Play extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String answer = answerET.getText().toString().toLowerCase();
-                String quizAnswer = fetch.quizzes.get(quizCount).answers.get(questionCount).toLowerCase();
-                if(answer.equals(quizAnswer)){
+                if (difficultyChoice.equals("Custom")) {
+                    String answer = answerET.getText().toString().toLowerCase();
+                    String quizAnswer = customQuizzes.get(customQuizCount).answers.get(customQuestionCount).toLowerCase();
 
+                    if (answer.equals(quizAnswer)) {
+                        score++;
+                        points = points + 5;
+                    } else {
+                        score--;
+                        points = points - 5;
+                    }
 
+                    customQuestionCount++;
+                    millis = 10000;
+                    answerET.setText("");
 
+                    changeQuestion();
+                } else {
+                    String answer = answerET.getText().toString().toLowerCase();
+                    String quizAnswer = fetch.quizzes.get(quizCount).answers.get(questionCount).toLowerCase();
+                    if (answer.equals(quizAnswer)) {
+                        score++;
+                        points = points + 5;
+                    } else {
+                        score--;
+                        points = points - 5;
+                    }
 
-                  score++;
-                    points=points+5;
+                    questionCount++;
+                    millis = 10000;
+                    answerET.setText("");
+                    //  t.cancel();
+                    changeQuestion();
                 }
-                else{
-                  score--;
-                    points=points-5;
-              }
-                t.cancel();
-              questionCount++;
-               millis=10000;
-                answerET.setText("");
-                changeQuestion();
             }
         });
 
@@ -147,61 +170,116 @@ public class Play extends AppCompatActivity {
 
         for (Quiz q: fetch.quizzes) {
             if(q.category.equals(cat) && q.difficulty.equals(diff)){
-                  quizCount=fetch.quizzes.indexOf(q);
-              //    question.setText("This quiz number is:"+ fetch.quizzes.size());
+                quizCount=fetch.quizzes.indexOf(q);
+                //    question.setText("This quiz number is:"+ fetch.quizzes.size());
 
-                   //quizCount= fetch.quizzes.indexOf(q);
-
-                }
+                //quizCount= fetch.quizzes.indexOf(q);
+                changeQuestion();
             }
-/*
-            if (cat.equals("custom")) {
-                customQuizcount = 1;
-            } */
+        }
+
+
+        for (Quiz p: customQuizzes) {
+            if(p.category.equals(cat)) {
+
+                customQuizCount = customQuizzes.indexOf(p);
+            found=true;
+                changeQuestion();
+
+            }
+            }
+            if(!found&&difficultyChoice.equals("Custom")){
+            customQuizCount=-1;
+                Intent intent= new Intent(Play.this, QuizOptions.class);
+                startActivity(intent);
+                finish();
+            }
+
+
+
+
 
         }
 
 
     public void changeQuestion(){
 
+        if(!(customQuestionCount==3||questionCount==3)) {
 
 
-            if(questionCount < fetch.quizzes.get(quizCount).questions.size()) {
+            if (difficultyChoice.equals("Custom")) {
+                if (customQuestionCount < customQuizzes.get(customQuizCount).questions.size()) {
+                    cq = new CustomQuiz();
+                    question.setText(customQuizzes.get(customQuizCount).questions.get(customQuestionCount));
+
+                    category.setText("Category: " + customQuizzes.get(customQuizCount).category);
+                    difficulty.setText("Difficulties: " + customQuizzes.get(customQuizCount).difficulty);
+                    scoreTV.setText("Score: " + score);
+                    pointsTV.setText("Points: " + points);
+
+                    if (timerChoice) {
+                        millis = 10000;
+
+                        if (customQuestionCount == 0) {
+                            startTimer(millis, 1000);
+                        } else if (customQuestionCount > 0) {
+                            t.cancel();
+                            millis = 10000;
+                            startTimer(millis, 1000);
+                        }
+
+                    }
+
+
+                }
+            } else if (questionCount < fetch.quizzes.get(quizCount).questions.size()) {
                 question.setText(fetch.quizzes.get(quizCount).questions.get(questionCount));
 
-                category.setText("Category: "+fetch.quizzes.get(quizCount).category);
-                difficulty.setText("Difficulties: "+fetch.quizzes.get(quizCount).difficulty);
+                category.setText("Category: " + fetch.quizzes.get(quizCount).category);
+                difficulty.setText("Difficulties: " + fetch.quizzes.get(quizCount).difficulty);
                 scoreTV.setText("Score: " + score);
                 pointsTV.setText("Points: " + points);
                 // timer.setText("Time Left: " + millis);// manage it according to you
                 if (timerChoice) {
                     millis = 10000;
-                    startTimer(millis, 1000);
+
+                    if (questionCount == 0) {
+                        startTimer(millis, 1000);
+                    } else if (questionCount > 0) {
+                        t.cancel();
+                        millis = 10000;
+                        startTimer(millis, 1000);
+                    }
+
+                }
+            }
+
+        }else{
+
+
+                question.setText("");
+                hintsTV.setText("Your Score is: " + score);
+                difficulty.setText(" ");
+                category.setText(" ");
+                scoreTV.setText(" ");
+                pointsTV.setText(" ");
+                timer.setText(" ");
+                if(timerChoice) {
+                    t.cancel();
                 }
 
 
 
-
-            }
-            else{
-
-                    question.setText("");
-                    hintsTV.setText("Your Score is: "+score);
-                    difficulty.setText(" ");
-                    category.setText(" ");
-                    scoreTV.setText(" ");
-                    pointsTV.setText(" ");
-                    timer.setText(" ");
-
-
-                    submit.setVisibility(View.GONE);
-                    hintsSubmit.setVisibility(View.GONE);
-                    answerET.setVisibility(View.GONE);
-
+                submit.setVisibility(View.GONE);
+                hintsSubmit.setVisibility(View.GONE);
+                answerET.setVisibility(View.GONE);
 
 
             }
-    }
+            }
+
+
+
 
 
     private void startTimer(final long finish, long tick){
@@ -221,8 +299,14 @@ public class Play extends AppCompatActivity {
                 millis = 10000;
                 score=score-1;
                 points=points-5;
-                questionCount++;
-                changeQuestion();
+
+                if(difficultyChoice.equals("Custom")){
+                    customQuestionCount++;
+                    changeQuestion();
+                }else {
+                    questionCount++;
+                    changeQuestion();
+                }
 
 
             cancel();

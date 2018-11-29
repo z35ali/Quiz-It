@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import org.json.JSONObject;
@@ -21,11 +22,27 @@ public class CustomQuiz extends AppCompatActivity {
     private String[] dummyArray = {"Math", "Science", "Geography"};
 
     private Button logoutbtn;
+    private Button button_submit;
     private Spinner dropdown;
-    private Spinner difficulty;
+    private EditText question1;
+    private EditText answer1;
+    private EditText question2;
+    private EditText answer2;
+    private EditText question3;
+    private EditText answer3;
+
+    Play play= new Play();
+   // FetchData fetchData = new FetchData();
+
     //chosen category from spinner gets saved in this variable
-    private String categoryChoice = "";
+    public String categoryChoice = "";
     private String difficultyChoice="";
+
+
+
+
+    //public ArrayList<Quiz> quizzes= new ArrayList<Quiz>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +50,14 @@ public class CustomQuiz extends AppCompatActivity {
 
 
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
+        button_submit = (Button) findViewById(R.id.button_submit);
+       question1 = (EditText) findViewById(R.id.questionET);
+        question2 = (EditText) findViewById(R.id.questionET2);
+        question3 = (EditText) findViewById(R.id.questionET3);
+        answer1 = (EditText) findViewById(R.id.answerET);
+        answer2 = (EditText) findViewById(R.id.answerET2);
+        answer3= (EditText) findViewById(R.id.answerET3);
+
 
         //sets spinner to the array
         dropdown = findViewById(R.id.categorySpinner);
@@ -89,11 +114,7 @@ createQuiz () {
 
                         break;
 
-                    case 4:
 
-                        categoryChoice = dummyArray[4];
-
-                        break;
 
 
 
@@ -120,6 +141,26 @@ createQuiz () {
                 //changes activity from current to Login
                 Intent intent= new Intent(CustomQuiz.this, Login.class);
                 startActivity(intent);
+
+            }
+        });
+
+
+        //onclick listener for submit button
+        button_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+             Quiz q = new Quiz("Custom", "Custom", categoryChoice, "Custom");
+
+                q.addQuestion(question1.getText().toString(), "", answer1.getText().toString());
+                q.addQuestion(question2.getText().toString(), "", answer2.getText().toString());
+                q.addQuestion(question3.getText().toString(), "", answer3.getText().toString());
+               Play.customQuizzes.add(q);
+
+
+
+
 
             }
         });
