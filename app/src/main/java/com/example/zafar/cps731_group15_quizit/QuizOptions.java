@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class QuizOptions extends AppCompatActivity {
 
@@ -33,12 +34,16 @@ public class QuizOptions extends AppCompatActivity {
     private CheckBox timer;
     private Spinner dropdown;
     private Spinner difficulty;
+    private TextView usernameText;
+    private TextView pointsText;
 
 
     //chosen category from spinner gets saved in this variable
     private String categoryChoice = "";
     private String difficultyChoice="";
 
+    public String username;
+    public int points;
 
 
 
@@ -54,7 +59,15 @@ public class QuizOptions extends AppCompatActivity {
         timer = (CheckBox) findViewById(R.id.timerOption);
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
         playbtn = (Button) findViewById(R.id.playbtn);
+        usernameText=(TextView)findViewById(R.id.usernameTV) ;
+        pointsText= (TextView)findViewById(R.id.pointsTV);
 
+
+        username=(getIntent().getExtras().getString("username"));
+        points=(getIntent().getExtras().getInt("points"));
+
+        pointsText.setText(""+points);
+        usernameText.setText(username);
         //onclick for logout button
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +93,8 @@ public class QuizOptions extends AppCompatActivity {
                     intent.putExtra("timerChoice", true);
                     intent.putExtra("category",categoryChoice);
                     intent.putExtra("difficulty",difficultyChoice);
+                    intent.putExtra("username",username);
+                    intent.putExtra("points",points);
                     startActivity(intent);
 
 
@@ -90,6 +105,8 @@ public class QuizOptions extends AppCompatActivity {
                     intent.putExtra("timerChoice", false);
                     intent.putExtra("category",categoryChoice);
                     intent.putExtra("difficulty",difficultyChoice);
+                    intent.putExtra("username",username);
+                    intent.putExtra("points",points);
                     startActivity(intent);
                 }
 

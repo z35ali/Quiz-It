@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Game extends AppCompatActivity {
 
     //layout variables
@@ -15,7 +17,11 @@ public class Game extends AppCompatActivity {
     private Button cqbtn;
     private Button reportbtn;
     private Button logoutbtn;
+    private String username;
 
+    private TextView usernameText;
+    private TextView pointsText;
+    private int points=0;
 
 
 
@@ -29,7 +35,15 @@ public class Game extends AppCompatActivity {
         cqbtn=(Button)findViewById(R.id.cqbtn);
         reportbtn=(Button)findViewById(R.id.reportbtn);
         logoutbtn=(Button)findViewById(R.id.logoutbtn);
+        usernameText=(TextView)findViewById(R.id.usernameTV) ;
+        pointsText= (TextView)findViewById(R.id.pointsTV);
 
+
+       username=(getIntent().getExtras().getString("username"));
+        points=(getIntent().getExtras().getInt("points"));
+
+        pointsText.setText(""+points);
+        usernameText.setText(username);
         //onclick listener for play button
         playbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +51,9 @@ public class Game extends AppCompatActivity {
 
                 //changes activity from current to QuizOptions
                 Intent intent= new Intent(Game.this, QuizOptions.class);
+                intent.putExtra("username", username);
+
+                intent.putExtra("points",points);
                 startActivity(intent);
 
             }

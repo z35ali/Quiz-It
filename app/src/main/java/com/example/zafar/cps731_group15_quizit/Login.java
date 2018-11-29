@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
     private boolean userFound=false;
     private boolean passFound=false;
    public  SignUp sign;
+   int index;
     //variable to keep track of login attempts
     private int count=5;
 
@@ -77,6 +78,10 @@ public class Login extends AppCompatActivity {
 
                 //changes activity from current to Game activity
                 Intent intent= new Intent(Login.this, Game.class);
+
+                intent.putExtra("username", "Unknown User");
+
+                intent.putExtra("points",0);
                 startActivity(intent);
 
 
@@ -104,6 +109,7 @@ public class Login extends AppCompatActivity {
         for(String user: username) {
             if (userName.equals(user)) {
                 userFound = true;
+                index=username.indexOf(user);
             }
         }
 
@@ -115,7 +121,11 @@ public class Login extends AppCompatActivity {
 
         if(userFound&&passFound) {
             Intent intent = new Intent(Login.this, Game.class);
+            intent.putExtra("username", username.get(index));
+
+            intent.putExtra("points",points.get(index));
             startActivity(intent);
+
         }
         else{
 

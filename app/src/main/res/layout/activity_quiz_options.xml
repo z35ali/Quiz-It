@@ -3,8 +3,30 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top"
     >
+
+
+<TextView
+        android:id="@+id/usernameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="right"
+        android:text="Username" />
+    <TextView
+        android:id="@+id/pointsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Points" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
     <Spinner
         android:id="@+id/difficultySpinner"
@@ -39,5 +61,5 @@
         android:layout_margin="10dp"
         android:text="Logout" />
 
-
+    </LinearLayout>
 </LinearLayout>

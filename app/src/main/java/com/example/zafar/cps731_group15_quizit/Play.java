@@ -31,6 +31,8 @@ public class Play extends AppCompatActivity {
     private TextView hintsTV;
     public int index;
     public boolean found=false;
+    public String username;
+
 
     CountDownTimer t;
 
@@ -38,7 +40,7 @@ public class Play extends AppCompatActivity {
     int questionCount;
     int customQuestionCount;
     int score=0;
-    private int points=0;
+   public int points;
     long millis;
     boolean timerChoice;
     String categoryChoice;
@@ -61,6 +63,8 @@ public class Play extends AppCompatActivity {
         fetch= new FetchData();
         fetch.fetchQuizzes();
 
+        username=(getIntent().getExtras().getString("username"));
+        points=(getIntent().getExtras().getInt("points"));
 
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
