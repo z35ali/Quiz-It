@@ -158,6 +158,12 @@ createQuiz () {
                 q.addQuestion(question3.getText().toString(), "", answer3.getText().toString());
                Play.customQuizzes.add(q);
 
+               question1.setText("");
+               question2.setText("");
+               question3.setText("");
+               answer1.setText("");
+               answer2.setText("");
+               answer3.setText("");
 
 
 
