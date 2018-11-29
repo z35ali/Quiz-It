@@ -266,7 +266,7 @@ public class FetchData {
                 //iterate through questions
                 //public void addQuestion(String question_text, String hint_text, String answer_ text)
                 for (int j = 0; j < jq.length(); j++) {
-                    JSONObject jqq = (JSONObject) jq.get(i);
+                    JSONObject jqq = (JSONObject) jq.get(j);
                     current_quiz.addQuestion((String) jqq.get("question"),
                             (String) jqq.get("hint"),
                             (String) jqq.get("answer"));

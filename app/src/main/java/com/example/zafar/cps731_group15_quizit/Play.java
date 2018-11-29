@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.os.CountDownTimer;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class Play extends AppCompatActivity {
 
@@ -20,21 +22,24 @@ public class Play extends AppCompatActivity {
     public static TextView category;
     public static TextView difficulty;
     public static TextView pointsTV;
-    private TextView scoreTV;
+    public static TextView scoreTV;
     private TextView answerET;
     private Button logoutbtn;
     private Button submit;
     private Button hintsSubmit;
     private TextView hintsTV;
+    public int index;
+
 
     int quizCount=0;
     int questionCount=0;
-    private int score=0;
+    int score=0;
     private int points=0;
     long millis;
     boolean timerChoice;
     String categoryChoice;
     String difficultyChoice;
+    Quiz currentQuiz;
 
     FetchData fetch;
 
@@ -43,8 +48,9 @@ public class Play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-   fetch= new FetchData();
+        fetch= new FetchData();
         fetch.fetchQuizzes();
+
 
         //sets Layout variables to layout items
         logoutbtn = (Button) findViewById(R.id.logoutbtn);
@@ -55,7 +61,7 @@ public class Play extends AppCompatActivity {
         answerET = (TextView)findViewById(R.id.answerET);
 
         scoreTV=(TextView)findViewById(R.id.scoreTV);
-        scoreTV.setText("Score: "+score);
+
 
         pointsTV=(TextView)findViewById(R.id.pointsTV);
         submit=(Button) findViewById(R.id.submitAnswerBtn);
@@ -64,9 +70,11 @@ public class Play extends AppCompatActivity {
         pointsTV.setText("Points: "+points);
         //Gets the variables passed from the QuizOptions activity
         timerChoice= getIntent().getExtras().getBoolean("timerChoice");
-       categoryChoice= getIntent().getExtras().getString("category");
+        categoryChoice= getIntent().getExtras().getString("category");
         difficultyChoice= getIntent().getExtras().getString("difficulty");
 
+        fetchQuiz(categoryChoice, difficultyChoice);
+        changeQuestion();
         //Checker that the variables were passed
        // category.setText("Your Category is: " + categoryChoice);
 
@@ -91,12 +99,24 @@ public class Play extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((fetch.quizzes.get(quizCount).answers).equals((answerET.getText().toString().toLowerCase()))){
-                    quizCount++;
-                    score++;
-                    points=score;
 
-                }
+                if((fetch.quizzes.get(quizCount).answers.get(0)).equals((answerET.getText().toString().toLowerCase()))){
+
+
+
+
+                  score++;
+                  points=score;
+                  questionCount++;
+                  changeQuestion();
+
+
+                }else{
+                  questionCount++;
+                  changeQuestion();
+                  score--;
+                  points=score;
+              }
 
 
             }
@@ -111,20 +131,36 @@ public class Play extends AppCompatActivity {
 
             }
         });
-        startGame();
+
     }
 
 
+    public void fetchQuiz(String cat, String diff){
 
-    public void startGame(){
+        for (Quiz q: fetch.quizzes) {
+            if(q.category.equals(cat) && q.difficulty.equals(diff)){
+                  quizCount=fetch.quizzes.indexOf(q);
+              //    question.setText("This quiz number is:"+ fetch.quizzes.size());
 
-        question.setText(fetch.quizzes.get(quizCount).category);
-        /*while(questionCount<fetch.quizzes.get(quizCount).questions.size()){
-            question.setText(fetch.quizzes.get(quizCount).questions.get(questionCount));
-            difficulty.setText(fetch.quizzes.get(quizCount).difficulty);
-            category.setText(fetch.quizzes.get(quizCount).category);
-            scoreTV.setText(score);
-            pointsTV.setText(points);
+                   //quizCount= fetch.quizzes.indexOf(q);
+
+                }
+            }
+        }
+
+
+    public void changeQuestion(){
+
+
+
+           question.setText(fetch.quizzes.get(quizCount).questions.get(0));
+/*
+            difficulty.setText(currentQuiz.difficulty);
+            category.setText(currentQuiz.category);
+            scoreTV.setText("Score: "+score);
+           pointsTV.setText("Points: "+points); */
+       // timer.setText("Time Left: " + millis);// manage it according to you
+
 
             if (timerChoice) {
                 millis = 30000;
@@ -141,7 +177,6 @@ public class Play extends AppCompatActivity {
 
 
 
-        }*/
     }
 
 
