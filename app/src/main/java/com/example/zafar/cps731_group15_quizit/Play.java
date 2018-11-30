@@ -51,6 +51,8 @@ public class Play extends AppCompatActivity {
     FetchData fetch;
     CustomQuiz cq;
 
+    public int hintTaps=0;
+
 
     public static ArrayList <Quiz> customQuizzes = new ArrayList<>();
 
@@ -158,6 +160,10 @@ public class Play extends AppCompatActivity {
         hintsSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(hintTaps==1){
+                    Toast.makeText(Play.this, "YOU ONLY GET ONE HINT", Toast.LENGTH_SHORT).show();
+                }else{
+                    hintTaps++;
                 if (difficultyChoice.equals("Custom")) {
                     Toast.makeText(Play.this, "CUSTOM QUIZZES DO NOT HAVE HINTS", Toast.LENGTH_SHORT).show();
                 } else {
@@ -169,7 +175,7 @@ public class Play extends AppCompatActivity {
                         Toast.makeText(Play.this, "YOU HAVE NO POINTS", Toast.LENGTH_SHORT).show();
                         pointsTV.setText("Points: " + points);
                     }
-
+                }
                 }
             }
 
@@ -222,7 +228,7 @@ public class Play extends AppCompatActivity {
 
 
     public void changeQuestion(){
-
+    hintTaps=0;
         if(!(customQuestionCount==3||questionCount==3)) {
 
 
@@ -240,11 +246,11 @@ public class Play extends AppCompatActivity {
                         millis = 10000;
 
                         if (customQuestionCount == 0) {
-                            startTimer(millis, 1000);
+                            startTimer(millis, 2000);
                         } else if (customQuestionCount > 0) {
                             t.cancel();
                             millis = 10000;
-                            startTimer(millis, 1000);
+                            startTimer(millis, 2000);
                         }
 
                     }
@@ -318,7 +324,14 @@ public class Play extends AppCompatActivity {
 
                 millis = 10000;
                 score=score-1;
+
+
                 points=points-5;
+
+
+                if(points<0){
+                    points=0;
+                }
 
                 if(difficultyChoice.equals("Custom")){
                     customQuestionCount++;

@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuizOptions extends AppCompatActivity {
 
@@ -36,6 +37,8 @@ public class QuizOptions extends AppCompatActivity {
     private Spinner difficulty;
     private TextView usernameText;
     private TextView pointsText;
+
+
 
 
     //chosen category from spinner gets saved in this variable
@@ -87,34 +90,41 @@ public class QuizOptions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Play play = new Play();
 
-                if (timerChoice) {
-
-                    //Changes the activity from current to Play page and passes the category and timer true
-                    Intent intent = new Intent(QuizOptions.this, Play.class);
-                    intent.putExtra("timerChoice", true);
-                    intent.putExtra("category",categoryChoice);
-                    intent.putExtra("difficulty",difficultyChoice);
-                    intent.putExtra("username",username);
-                    intent.putExtra("password",password);
-                    intent.putExtra("points",points);
-                    startActivity(intent);
+                if (play.customQuizzes.isEmpty()&&categoryChoice.equals("Custom")) {
+                    Toast.makeText(QuizOptions.this, "There Are No Custom Quizzes Created", Toast.LENGTH_SHORT).show();
 
 
-                }else{
+                } else {
+                    if (timerChoice) {
 
-                    //Changes the activity from current to Play page and passes the category and timer false
-                    Intent intent = new Intent(QuizOptions.this, Play.class);
-                    intent.putExtra("timerChoice", false);
-                    intent.putExtra("category",categoryChoice);
-                    intent.putExtra("difficulty",difficultyChoice);
-                    intent.putExtra("username",username);
-                    intent.putExtra("password",password);
-                    intent.putExtra("points",points);
-                    startActivity(intent);
+                        //Changes the activity from current to Play page and passes the category and timer true
+                        Intent intent = new Intent(QuizOptions.this, Play.class);
+                        intent.putExtra("timerChoice", true);
+                        intent.putExtra("category", categoryChoice);
+                        intent.putExtra("difficulty", difficultyChoice);
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
+                        intent.putExtra("points", points);
+                        startActivity(intent);
+
+
+                    } else {
+
+                        //Changes the activity from current to Play page and passes the category and timer false
+                        Intent intent = new Intent(QuizOptions.this, Play.class);
+                        intent.putExtra("timerChoice", false);
+                        intent.putExtra("category", categoryChoice);
+                        intent.putExtra("difficulty", difficultyChoice);
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
+                        intent.putExtra("points", points);
+                        startActivity(intent);
+                    }
+
+
                 }
-
-
             }
         });
 

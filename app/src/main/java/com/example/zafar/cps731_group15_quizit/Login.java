@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Login extends AppCompatActivity {
     //layout variables
     private EditText name;
     private EditText password;
-    private TextView info;
+
     private Button login;
     private Button signup;
     private Button btnskip;
@@ -43,9 +44,9 @@ public class Login extends AppCompatActivity {
         //sets layout variables to layout items in xml
         name=(EditText)findViewById(R.id.etName);
         password=(EditText)findViewById(R.id.etPassword);
-        info=(TextView)findViewById(R.id.tvInfo);
+
         login = (Button)findViewById(R.id.btnLogin);
-        info.setText("No of attempts remaining: 5");
+
         signup= (Button)findViewById(R.id.btnsignup);
         btnskip=(Button)findViewById(R.id.btnskip);
 
@@ -190,7 +191,8 @@ public class Login extends AppCompatActivity {
 
             //decrease number of attemps remaining
             count--;
-            info.setText("No of attempts remaining:" + String.valueOf(count));
+            Toast.makeText(Login.this, "Number of Attempts Left: "+String.valueOf(count), Toast.LENGTH_SHORT).show();
+
 
             //if too many attempts used then disable login
             if(count==0){
