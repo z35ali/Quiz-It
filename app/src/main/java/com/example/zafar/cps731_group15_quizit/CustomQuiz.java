@@ -64,22 +64,6 @@ public class CustomQuiz extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dummyArray);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-/*
-createQuiz () {
-    Quiz q = new Quiz();
-    q.questions.add("Question 1");
-    q.answers.add("Answer 1");
-    customQuizzes.add(q);
-    FetchData fetchData = new FetchData();
-    customQuizzes = fetchData.customQuizzes;
-
-}
-    */       /* public void createJSON() {
-                Quiz quizObject = new Quiz();
-
-                JSONObject quiz = new JSONObject();
-                quiz
-            } */
 
             //Called when a spinner item is selected and stores the selection in categoryChoice
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
