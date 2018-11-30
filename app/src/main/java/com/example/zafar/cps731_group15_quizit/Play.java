@@ -125,7 +125,7 @@ public class Play extends AppCompatActivity {
                         score++;
                         points = points + 5;
                     } else {
-                        score--;
+                       // score--;
                         points = points - 5;
                     }
 
@@ -141,7 +141,7 @@ public class Play extends AppCompatActivity {
                         score++;
                         points = points + 5;
                     } else {
-                        score--;
+                       // score--;
                         points = points - 5;
                     }
 
@@ -277,7 +277,8 @@ public class Play extends AppCompatActivity {
 
 
                 question.setText("");
-                hintsTV.setText("Your Score is: " + score);
+                hintsTV.setText("Your Score is: " + score+"/3");
+            hintsTV.append(" \n Your Points is: " + points);
                 difficulty.setText(" ");
                 category.setText(" ");
                 scoreTV.setText(" ");
