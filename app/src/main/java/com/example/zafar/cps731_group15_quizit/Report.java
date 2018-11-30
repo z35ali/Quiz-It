@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,8 @@ public class Report extends AppCompatActivity {
             public void onClick(View v) {
                 reportName.add(name.getText().toString());
                 reportDetails.add(description.getText().toString());
+                Toast.makeText(Report.this, "Report Submitted", Toast.LENGTH_SHORT).show();
+
 
 
             }
