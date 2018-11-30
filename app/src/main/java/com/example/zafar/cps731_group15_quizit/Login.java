@@ -181,10 +181,12 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(Login.this, Game.class);
 
 
-           intent.putExtra("username", username.get(index));
-           intent.putExtra("points",points.get(index));
-            intent.putExtra("password",pass.get(index));
-            startActivity(intent);
+            if(!userName.equals("")) {
+                intent.putExtra("username", username.get(index));
+                intent.putExtra("points", points.get(index));
+                intent.putExtra("password", pass.get(index));
+                startActivity(intent);
+            }
 
         }
         else{
