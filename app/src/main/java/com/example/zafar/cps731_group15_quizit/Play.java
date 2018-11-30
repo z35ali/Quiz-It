@@ -132,7 +132,7 @@ public class Play extends AppCompatActivity {
                     }
 
                     customQuestionCount++;
-                    millis = 10000;
+                    millis = 20000;
                     answerET.setText("");
 
                     changeQuestion();
@@ -148,7 +148,7 @@ public class Play extends AppCompatActivity {
                     }
 
                     questionCount++;
-                    millis = 10000;
+                    millis = 20000;
                     answerET.setText("");
                     //  t.cancel();
                     changeQuestion();
@@ -243,14 +243,14 @@ public class Play extends AppCompatActivity {
                     pointsTV.setText("Points: " + points);
 
                     if (timerChoice) {
-                        millis = 10000;
+                        millis = 20000;
 
                         if (customQuestionCount == 0) {
-                            startTimer(millis, 2000);
+                            startTimer(millis, 1000);
                         } else if (customQuestionCount > 0) {
                             t.cancel();
-                            millis = 10000;
-                            startTimer(millis, 2000);
+                            millis = 20000;
+                            startTimer(millis, 1000);
                         }
 
                     }
@@ -266,13 +266,13 @@ public class Play extends AppCompatActivity {
                 pointsTV.setText("Points: " + points);
                 // timer.setText("Time Left: " + millis);// manage it according to you
                 if (timerChoice) {
-                    millis = 10000;
+                    millis = 20000;
 
                     if (questionCount == 0) {
                         startTimer(millis, 1000);
                     } else if (questionCount > 0) {
                         t.cancel();
-                        millis = 10000;
+                        millis = 20000;
                         startTimer(millis, 1000);
                     }
 
@@ -322,7 +322,7 @@ public class Play extends AppCompatActivity {
             timer.setText("00:00:00");
             Toast.makeText(Play.this, "Finish", Toast.LENGTH_SHORT).show();
 
-                millis = 10000;
+                millis = 20000;
                 score=score-1;
 
 
