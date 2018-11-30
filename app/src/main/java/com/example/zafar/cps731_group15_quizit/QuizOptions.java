@@ -71,8 +71,8 @@ public class QuizOptions extends AppCompatActivity {
         points=(getIntent().getExtras().getInt("points"));
         password=(getIntent().getExtras().getString("password"));
 
-        pointsText.setText(""+points);
-        usernameText.setText(username);
+        pointsText.setText("Points: "+points+"  ");
+        usernameText.setText("Username: " +username+"  ");
         //onclick for logout button
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +92,7 @@ public class QuizOptions extends AppCompatActivity {
 
                 Play play = new Play();
 
-                if (play.customQuizzes.isEmpty()&&categoryChoice.equals("Custom")) {
+                if (play.customQuizzes.isEmpty()&&difficultyChoice.equals("Custom")) {
                     Toast.makeText(QuizOptions.this, "There Are No Custom Quizzes Created", Toast.LENGTH_SHORT).show();
 
 

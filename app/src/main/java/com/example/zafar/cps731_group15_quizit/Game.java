@@ -49,8 +49,8 @@ public class Game extends AppCompatActivity {
         points=(getIntent().getExtras().getInt("points"));
         password=(getIntent().getExtras().getString("password"));
 
-        pointsText.setText(""+points);
-        usernameText.setText(username);
+        pointsText.setText("Points: "+points+"  ");
+        usernameText.setText("Username: "+username+"  ");
         //onclick listener for play button
         playbtn.setOnClickListener(new View.OnClickListener() {
             @Override
