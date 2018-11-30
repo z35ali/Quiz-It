@@ -29,6 +29,7 @@ public class Login extends AppCompatActivity {
    boolean loggedOut=false;
     //variable to keep track of login attempts
     private int count=5;
+    public static boolean youAdmin;
 
         public static ArrayList <String> username = new ArrayList<>();
         public static ArrayList <String> pass= new ArrayList<>();
@@ -49,7 +50,7 @@ public class Login extends AppCompatActivity {
         btnskip=(Button)findViewById(R.id.btnskip);
 
 
-
+        youAdmin=false;
 
 
 
@@ -84,7 +85,7 @@ public class Login extends AppCompatActivity {
                 }
 
 
-        }catch ( NullPointerException e) {
+        }catch ( Exception e) {
                     username.add("admin");
                     pass.add("1234");
                     points.add(99999);
@@ -159,6 +160,9 @@ public class Login extends AppCompatActivity {
         for(String user: username) {
             if (userName.equals(user)) {
                 userFound = true;
+                if(user.equals("admin")){
+                    youAdmin=true;
+                }
 
                 index=username.indexOf(user);
 

@@ -27,7 +27,8 @@
         <activity android:name=".Report" />
         <activity android:name=".Play" />
         <activity android:name=".CustomQuiz" />
-        <activity android:name=".QuizOptions"></activity>
+        <activity android:name=".QuizOptions" />
+        <activity android:name=".ReportAdmin"></activity>
     </application>
 
 </manifest>

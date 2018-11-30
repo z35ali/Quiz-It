@@ -24,6 +24,7 @@ public class Game extends AppCompatActivity {
     private TextView pointsText;
     private int points=0;
 
+    Login login = new Login();
 
 
     @Override
@@ -67,10 +68,17 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //changes activity from current to Report
-                Intent intent= new Intent(Game.this, Report.class);
-                startActivity(intent);
+                if (login.youAdmin) {
+                    //changes activity from current to Report
+                    Intent intent = new Intent(Game.this, ReportAdmin.class);
+                    startActivity(intent);
 
+                } else {
+
+
+                    Intent intent = new Intent(Game.this, Report.class);
+                    startActivity(intent);
+                }
             }
         });
 

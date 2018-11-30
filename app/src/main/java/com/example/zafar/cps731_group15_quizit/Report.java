@@ -12,13 +12,14 @@ import java.util.ArrayList;
 public class Report extends AppCompatActivity {
 
 
-    public ArrayList<String> reportName= new ArrayList<>();
-    public ArrayList<String> reportDetails= new ArrayList<>();
+    public static ArrayList<String> reportName= new ArrayList<>();
+    public static ArrayList<String> reportDetails= new ArrayList<>();
 
     private Button logoutbtn;
     private Button submitbtn;
-    private EditText name;
-    private EditText description;
+    public static EditText name;
+    public static  EditText description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
