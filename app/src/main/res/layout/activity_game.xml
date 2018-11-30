@@ -24,7 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:gravity="center"
+        android:gravity="top|center_horizontal"
         >
     <Button
         android:id="@+id/playbtn"
@@ -52,6 +52,25 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Logout" />
+
+        <Button
+            android:id="@+id/howtobtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="How To Play" />
+
+
+        <TextView
+            android:id="@+id/howtoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:text=""
+            android:textSize="12sp" />
+
+
 
 
 

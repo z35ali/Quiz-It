@@ -17,6 +17,9 @@ public class Game extends AppCompatActivity {
     private Button cqbtn;
     private Button reportbtn;
     private Button logoutbtn;
+    private TextView howtoTV;
+
+    private Button howToPlay;
     private String username;
     private String password;
 
@@ -39,7 +42,8 @@ public class Game extends AppCompatActivity {
         logoutbtn=(Button)findViewById(R.id.logoutbtn);
         usernameText=(TextView)findViewById(R.id.usernameTV) ;
         pointsText= (TextView)findViewById(R.id.pointsTV);
-
+        howToPlay=(Button)findViewById(R.id.howtobtn);
+        howtoTV= (TextView)findViewById(R.id.howtoTV);
 
        username=(getIntent().getExtras().getString("username"));
         points=(getIntent().getExtras().getInt("points"));
@@ -105,6 +109,50 @@ public class Game extends AppCompatActivity {
 
             }
         });
+
+
+        //onclick listener for how to play button
+        howToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (howtoTV.getText().equals("Welcome!\n" +
+                        "\n" +
+                        "Players can choose from 3 catogories: Math, Science, Geography.\n" +
+                        "\n" +
+                        "Each category can be played on difficulty Easy, Medium, Hard or Custom.\n" +
+                        "\n" +
+                        "For every correct answer provided, the player will gain 5 points and 1 score.\n" +
+                        "\n" +
+                        "Players can unlock hints by using up 5 of their points.\n" +
+                        "\n" +
+                        "If the player has selected the timer option, then the player will have 30 seconds to answer the question. Otherwise, it is counted as incorrect.\n" +
+                        "\n" +
+                        "Our Custom difficulty allows players to play the quizzes that have been created by other players. (You can create your own custom quiz through the main page.)\n" +
+                        "\n" +
+                        "Enjoy Our Game!")) {
+                    howtoTV.setText("");
+                } else {
+                    howtoTV.setText("Welcome!\n" +
+                            "\n" +
+                            "Players can choose from 3 catogories: Math, Science, Geography.\n" +
+                            "\n" +
+                            "Each category can be played on difficulty Easy, Medium, Hard or Custom.\n" +
+                            "\n" +
+                            "For every correct answer provided, the player will gain 5 points and 1 score.\n" +
+                            "\n" +
+                            "Players can unlock hints by using up 5 of their points.\n" +
+                            "\n" +
+                            "If the player has selected the timer option, then the player will have 30 seconds to answer the question. Otherwise, it is counted as incorrect.\n" +
+                            "\n" +
+                            "Our Custom difficulty allows players to play the quizzes that have been created by other players. (You can create your own custom quiz through the main page.)\n" +
+                            "\n" +
+                            "Enjoy Our Game!");
+
+                }
+            }
+        });
     }
+
+
 
 }
