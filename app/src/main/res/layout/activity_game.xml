@@ -68,7 +68,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="0dp"
             android:text=""
-            android:textSize="11sp" />
+            android:textSize="12sp" />
 
 
 
