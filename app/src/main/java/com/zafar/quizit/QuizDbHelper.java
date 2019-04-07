@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class QuizDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Quiz-it.db";
+    private static final String DATABASE_NAME = "Quiz-It.db";
     private static final int DATABASE_VERSION = 1;
 
     private SQLiteDatabase db;
@@ -47,15 +47,15 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question("A is correct", "A", "B", "C", 1);
+        Question q1 = new Question("What is the country below Canada?", "England", "France", "United States of America", 3);
         addQuestion(q1);
-        Question q2 = new Question("B is correct", "A", "B", "C", 2);
+        Question q2 = new Question("Which of the following is a solid?", "Water", "Brick", "Hydrogen", 2);
         addQuestion(q2);
-        Question q3 = new Question("C is correct", "A", "B", "C", 3);
+        Question q3 = new Question("Which of the following super heroes are from DC?", "Hulk", "Captain America", "The Flash", 3);
         addQuestion(q3);
-        Question q4 = new Question("A is correct again", "A", "B", "C", 1);
+        Question q4 = new Question("What is 2+3?", "5", "Infinity", "-5", 1);
         addQuestion(q4);
-        Question q5 = new Question("B is correct again", "A", "B", "C", 2);
+        Question q5 = new Question("What shoe brand has a checkmark?", "Gucci", "Nike", "Sketchers", 2);
         addQuestion(q5);
     }
 
