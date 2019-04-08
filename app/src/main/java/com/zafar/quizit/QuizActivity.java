@@ -3,6 +3,7 @@ package com.zafar.quizit;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +17,11 @@ import org.w3c.dom.Text;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "scorePassed";
+    private static final long COUNTDOWN_IN_MILLIS = 31000; //31 seconds since timer starts at 29 if put to 30
     private TextView textViewQuestion;
     private TextView textViewScore;
     private TextView textViewQuestionCount;
@@ -31,6 +34,12 @@ public class QuizActivity extends AppCompatActivity {
     private List<Question> questionList;
 
     private ColorStateList textColorDefaultRb;
+    private ColorStateList textColorDefaultCd;
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMillis;
+
+
     private int questionCounter;
     private int questionCountTotal;
     private Question currentQuestion;
@@ -57,6 +66,7 @@ public class QuizActivity extends AppCompatActivity {
         buttonConfirmNext = findViewById(R.id.button_confirm_next);
 
         textColorDefaultRb = rb1.getTextColors();
+        textColorDefaultCd = textViewCountdown.getTextColors();
 
 
 
@@ -103,6 +113,9 @@ public class QuizActivity extends AppCompatActivity {
           textViewQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal);
           answered = false;
           buttonConfirmNext.setText("Confirm");
+
+          timeLeftInMillis = COUNTDOWN_IN_MILLIS;
+          startCountDownTimer();
         }else{
             finishQuiz();
         }
@@ -110,8 +123,44 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    private void startCountDownTimer(){
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+
+                //fixes bug where countdown timer ends at 1 not 0
+                timeLeftInMillis = 0;
+                updateCountDownText();
+                checkAnswer();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText(){
+        int minutes = (int)(timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+
+        String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes,seconds);
+
+        textViewCountdown.setText(timeFormatted);
+
+        if(timeLeftInMillis < 10000){
+            textViewCountdown.setTextColor(Color.RED);
+
+        }else{
+            textViewCountdown.setTextColor(textColorDefaultCd);
+        }
+    }
     private void checkAnswer(){
         answered = true;
+
+        countDownTimer.cancel();
         RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
         int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
 
@@ -168,5 +217,13 @@ public class QuizActivity extends AppCompatActivity {
         }
         backPressedTime = System.currentTimeMillis();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(countDownTimer !=null){
+            countDownTimer.cancel();
+        }
     }
 }
