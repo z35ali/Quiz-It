@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText mTextUsername;
-    EditText mTextPassword;
+    public static EditText mTextUsername;
+    public static EditText mTextPassword;
     Button mButtonLogin;
     TextView mTextViewRegister;
     DatabaseHelper db;

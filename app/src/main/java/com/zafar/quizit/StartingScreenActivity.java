@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -31,6 +32,7 @@ public class StartingScreenActivity extends AppCompatActivity {
     private int highscore;
     private static String user;
     private static String highScoreUser = "";
+    private long backPressedTime;
 
 
 
@@ -137,4 +139,19 @@ public class StartingScreenActivity extends AppCompatActivity {
 
         editor.apply();
     }
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            LoginActivity.mTextPassword.setText("");
+            LoginActivity.mTextUsername.setText("");
+            LoginActivity.mTextPassword.clearFocus();
+            finish();
+        }else{
+            Toast.makeText(this, "Press Back Again To Go Back to Login", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+
+    }
+
 }
