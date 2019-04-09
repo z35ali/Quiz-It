@@ -20,14 +20,26 @@
         />
 
     <TextView
-        android:id="@+id/text_view_question_count"
+    android:id="@+id/text_view_question_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/text_view_score"
+    android:text="Question: 1/x"
+    android:textColor="@android:color/black"
+    android:freezesText="true"
+    />
+
+    <TextView
+        android:id="@+id/text_view_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_score"
-        android:text="Question: 1/x"
+        android:layout_below="@id/text_view_question_count"
+        android:text="Difficulty: "
         android:textColor="@android:color/black"
         android:freezesText="true"
         />
+
+
 
     <TextView
         android:id="@+id/text_view_countdown"

@@ -35,6 +35,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView textViewQuestion;
     private TextView textViewScore;
     private TextView textViewQuestionCount;
+    private TextView textViewDifficulty;
     private TextView textViewCountdown;
     private RadioGroup rbGroup;
     private RadioButton rb1;
@@ -58,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
     private boolean answered;
 
     private long backPressedTime;
-
+    String difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class QuizActivity extends AppCompatActivity {
         textViewScore = findViewById(R.id.text_view_score);
         textViewQuestionCount= findViewById(R.id.text_view_question_count);
         textViewCountdown = findViewById(R.id.text_view_countdown);
+        textViewDifficulty = findViewById(R.id.text_view_difficulty);
         rbGroup = findViewById(R.id.radio_group);
         rb1 = findViewById(R.id.radio_button1);
         rb2 = findViewById(R.id.radio_button2);
@@ -78,9 +80,14 @@ public class QuizActivity extends AppCompatActivity {
         textColorDefaultRb = rb1.getTextColors();
         textColorDefaultCd = textViewCountdown.getTextColors();
 
+        Intent intent = getIntent();
+        difficulty = intent.getStringExtra(StartingScreenActivity.EXTRA_DIFFICULTY);
+        textViewDifficulty.setText("Difficulty: " + difficulty);
+
+
         if(savedInstanceState == null) {
             QuizDbHelper dbHelper = new QuizDbHelper(this);
-            questionList = dbHelper.getQuestions("Medium");
+            questionList = dbHelper.getQuestions(difficulty);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
             showNextQuestion();
@@ -197,11 +204,19 @@ public class QuizActivity extends AppCompatActivity {
         int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
 
         if(answerNr == currentQuestion.getAnswerNr()){
-            score++;
+            if(difficulty.equals("Easy")) {
+                score++;
+            }else if (difficulty.equals("Medium")){
+                score+=2;
+
+            }else{
+                score+=3;
+            }
             textViewScore.setText("Score: "+ score);
         }
         showSolution();
     }
+
 
     private void showSolution(){
         rb1.setTextColor(Color.RED);
