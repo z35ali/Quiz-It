@@ -23,11 +23,15 @@ public class StartingScreenActivity extends AppCompatActivity {
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCORE = "keyHighscore";
-
+    public static final String KEY_HIGHUSER = "keyHighUser";
     private TextView textViewHighscore;
+    private TextView textViewUser;
     private Spinner spinnerDifficulty;
     private Spinner spinnerCategory;
     private int highscore;
+    private static String user;
+    private static String highScoreUser = "";
+
 
 
     @Override
@@ -36,6 +40,12 @@ public class StartingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_screen);
 
         textViewHighscore = findViewById(R.id.text_view_highscore);
+        textViewUser = findViewById(R.id.textViewUser);
+
+        Intent intent1 = getIntent();
+       user = intent1.getStringExtra("user");
+
+       textViewUser.setText("User: " + user);
         spinnerDifficulty= findViewById(R.id.spinner_difficulty);
         spinnerCategory= findViewById(R.id.spinner_category);
 
@@ -64,6 +74,7 @@ public class StartingScreenActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_DIFFICULTY, diff);
+
         startActivityForResult(intent, REQUEST_CODE_QUIZ );
 
     }
@@ -105,18 +116,25 @@ public class StartingScreenActivity extends AppCompatActivity {
     private void loadHighScore(){
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         highscore = prefs.getInt(KEY_HIGHSCORE, 0);
-        textViewHighscore.setText("Highscore: " + highscore);
-
+        highScoreUser = prefs.getString(KEY_HIGHUSER,"");
+        if(highScoreUser.equals("")){
+            textViewHighscore.setText("No HighScore Yet");
+        }else {
+            textViewHighscore.setText("All Time Highscore: " + highscore + " (" + highScoreUser + ")");
+        }
     }
 
     private void updateScore(int highscoreNew){
         highscore = highscoreNew;
-        textViewHighscore.setText("Highscore: " + highscore);
+        highScoreUser = user;
+        textViewHighscore.setText("All Time Highscore: " + highscore + " ("+highScoreUser+")");
 
         //Save value in Shared Prefs
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(KEY_HIGHSCORE, highscore);
+        editor.putString(KEY_HIGHUSER, highScoreUser);
+
         editor.apply();
     }
 }
