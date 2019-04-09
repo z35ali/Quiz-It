@@ -19,7 +19,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".StartingScreenActivity" />
         <activity android:name=".QuizActivity" />
+        <activity android:name=".AddCategoryActivity"></activity>
         <activity android:name=".AddQuestionActivity"></activity>
+
     </application>
 
 </manifest>

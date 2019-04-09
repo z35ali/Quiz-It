@@ -39,7 +39,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_CATEGORIES_TABLE = "CREATE TABLE "+
                 CategoriesTable.TABLE_NAME + "( " +
                 CategoriesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                CategoriesTable.COLUMN_NAME + " TEXT " + ")";
+                CategoriesTable.COLUMN_NAME + " TEXT UNIQUE " + ")";
 
         final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
                 QuestionsTable.TABLE_NAME + " ( " +

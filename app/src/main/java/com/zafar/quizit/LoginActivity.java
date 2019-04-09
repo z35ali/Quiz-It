@@ -27,15 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         db = new DatabaseHelper(this);
         mTextUsername = (EditText)findViewById(R.id.edittext_username);
         mTextPassword = (EditText)findViewById(R.id.edittext_password);
         mButtonLogin = (Button)findViewById(R.id.button_login);
         mTextViewRegister = (TextView)findViewById(R.id.textview_register);
 
-        db.addUser("adminAdd","adminAdd");
+        db.addUser("adminQuest","adminQuest");
+        db.addUser("adminCat","adminCat");
         db.addUser("adminPlay","adminPlay");
 
 
@@ -56,14 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                 if(res == true)
                 {
 
-                    if(user.equals("adminAdd") && (pwd.equals("adminAdd"))) {
+                    if(user.equals("adminQuest") && (pwd.equals("adminQuest"))) {
                         Intent HomePage = new Intent(LoginActivity.this, AddQuestionActivity.class);
                         startActivity(HomePage);
-                    }else if(user.equals("adminPlay") && (pwd.equals("adminPlay"))) {
+                    }else if(user.equals("adminCat") && (pwd.equals("adminCat"))) {
+                        Intent CatPage = new Intent(LoginActivity.this, AddCategoryActivity.class);
+                        startActivity(CatPage);
+                }else if(user.equals("adminPlay") && (pwd.equals("adminPlay"))) {
                         Intent PlayPage = new Intent(LoginActivity.this, StartingScreenActivity.class);
-                        PlayPage.putExtra("user","adminPlay");
+                        PlayPage.putExtra("user", "adminPlay");
                         startActivity(PlayPage);
-                }else{
+                    }else{
                         Intent HomePage = new Intent(LoginActivity.this,StartingScreenActivity.class);
                         HomePage.putExtra("user",user);
                         startActivity(HomePage);
