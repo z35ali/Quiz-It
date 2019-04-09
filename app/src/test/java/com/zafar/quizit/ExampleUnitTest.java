@@ -1,4 +1,4 @@
-package com.example.zafar.cps731_group15_quizit;
+package com.zafar.quizit;
 
 import org.junit.Test;
 
