@@ -35,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin = (Button)findViewById(R.id.button_login);
         mTextViewRegister = (TextView)findViewById(R.id.textview_register);
 
-        db.addUser("admin","admin");
+        db.addUser("adminAdd","adminAdd");
+        db.addUser("adminPlay","adminPlay");
+
 
         mTextViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +56,13 @@ public class LoginActivity extends AppCompatActivity {
                 if(res == true)
                 {
 
-                    if(user.equals("admin") && (pwd.equals("admin"))){
+                    if(user.equals("adminAdd") && (pwd.equals("adminAdd"))) {
                         Intent HomePage = new Intent(LoginActivity.this, AddQuestionActivity.class);
                         startActivity(HomePage);
+                    }else if(user.equals("adminPlay") && (pwd.equals("adminPlay"))) {
+                        Intent PlayPage = new Intent(LoginActivity.this, StartingScreenActivity.class);
+                        PlayPage.putExtra("user","adminPlay");
+                        startActivity(PlayPage);
                 }else{
                         Intent HomePage = new Intent(LoginActivity.this,StartingScreenActivity.class);
                         HomePage.putExtra("user",user);

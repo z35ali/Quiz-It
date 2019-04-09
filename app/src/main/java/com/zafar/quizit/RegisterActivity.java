@@ -46,12 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
                 if(pwd.equals(cnf_pwd)){
                     long val = db.addUser(user,pwd);
                     if(val > 0){
-                        Toast.makeText(RegisterActivity.this,"You have registered",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"You Have Registered",Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
                         startActivity(moveToLogin);
                     }
                     else{
-                        Toast.makeText(RegisterActivity.this,"Registeration Error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Registration Error",Toast.LENGTH_SHORT).show();
                     }
 
                 }
