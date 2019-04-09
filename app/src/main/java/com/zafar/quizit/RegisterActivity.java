@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(moveToLogin);
                     }
                     else{
-                        Toast.makeText(RegisterActivity.this,"Registration Error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"User Already Exists",Toast.LENGTH_SHORT).show();
                     }
 
                 }
