@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,9 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     Button submitButton;
     Question question;
+
+    private long backPressedTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,21 @@ public class AddQuestionActivity extends AppCompatActivity {
     private void Add_Question(Question question){
         QuizDbHelper.getInstance(this).addQuestion((question));
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            LoginActivity.mTextPassword.setText("");
+            LoginActivity.mTextUsername.setText("");
+            LoginActivity.mTextPassword.clearFocus();
+            LoginActivity.mTextUsername.clearFocus();
+            finish();
+        }else{
+            Toast.makeText(this, "Press Back Again To Go Back to Login", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
 
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddCategoryActivity extends AppCompatActivity {
 
@@ -14,6 +15,8 @@ public class AddCategoryActivity extends AppCompatActivity {
     TextView addCategory;
     Button submitButton;
     Category category;
+    private long backPressedTime;
+
 
 
     @Override
@@ -42,6 +45,21 @@ public class AddCategoryActivity extends AppCompatActivity {
 
     private void addCategory(Category category){
         QuizDbHelper.getInstance(this).addCategory((category));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            LoginActivity.mTextPassword.setText("");
+            LoginActivity.mTextUsername.setText("");
+            LoginActivity.mTextPassword.clearFocus();
+            LoginActivity.mTextUsername.clearFocus();
+            finish();
+        }else{
+            Toast.makeText(this, "Press Back Again To Go Back to Login", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+
     }
 
 
