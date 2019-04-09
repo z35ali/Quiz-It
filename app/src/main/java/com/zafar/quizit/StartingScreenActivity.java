@@ -64,6 +64,8 @@ public class StartingScreenActivity extends AppCompatActivity {
         startQuiz();
             }
         });
+
+
     }
 
     private void startQuiz(){

@@ -16,6 +16,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mTextCnfPassword;
     Button mButtonRegister;
     TextView mTextViewLogin;
+    private long backPressedTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +62,20 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            LoginActivity.mTextPassword.setText("");
+            LoginActivity.mTextUsername.setText("");
+            LoginActivity.mTextPassword.clearFocus();
+            LoginActivity.mTextUsername.clearFocus();
+            finish();
+        }else{
+            Toast.makeText(this, "Press Back Again To Go Back to Login", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+
     }
 }
