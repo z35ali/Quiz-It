@@ -385,12 +385,12 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 "Time Stone", "Earth Stone", "Soul Stone", 2,
                 Question.DIFFICULTY_HARD, Category.SUPERHEROES);
         insertQuestion(q);
-        q = new Question("Superheroes, Hard: Which speedster is known as Kid Flash?",
-                "Wally West", "Barry Allen", "Jessie Quick", 1,
+        q = new Question("Superheroes, Hard: What was the infinity stone located in the Tesseract (The Cube) called?",
+                "The Space Stone", "The Soul Stone", "The Power Stone", 1,
                 Question.DIFFICULTY_HARD, Category.SUPERHEROES);
         insertQuestion(q);
-        q = new Question("Superheroes, Hard: What colour was Thanos before he was purple?",
-                "Blue", "Grey", "He was always purple", 1,
+        q = new Question("Superheroes, Hard: What does Thanos say to Thor when Thor stabs him in the heart in Avengers Infinity War?",
+                "You should have gone for the head", "You hit me in the heart", "All I ever wanted was peace", 1,
                 Question.DIFFICULTY_HARD, Category.SUPERHEROES);
         insertQuestion(q);
 
