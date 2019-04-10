@@ -28,7 +28,7 @@
             android:layout_width="190dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="#ffffff"
+            android:background="#F5F5F5"
 
             android:drawableLeft="@drawable/add"
             android:paddingLeft="2dp"
@@ -42,7 +42,7 @@
         android:layout_width="190dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-
+        android:background="#ffffff"
         android:text="@string/submit"/>
 
 

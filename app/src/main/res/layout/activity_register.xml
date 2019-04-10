@@ -20,7 +20,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:paddingLeft="2dp"
-        android:background="#ffffff"
+        android:background="#F5F5F5"
         android:drawableLeft="@drawable/username"
         android:hint="@string/username"/>
 
@@ -29,7 +29,7 @@
         android:layout_width="206dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="#ffffff"
+        android:background="#F5F5F5"
         android:drawableLeft="@drawable/password"
         android:inputType="textPassword"
         android:hint="@string/password"/>
@@ -39,7 +39,7 @@
         android:layout_width="206dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="#ffffff"
+        android:background="#F5F5F5"
         android:drawableLeft="@drawable/password"
         android:inputType="textPassword"
         android:hint="@string/confirm_password"/>
@@ -48,7 +48,7 @@
         android:layout_width="206dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-
+        android:background="#ffffff"
         android:text="@string/register"/>
 
     <LinearLayout
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:textColor="#ffffff"
+            android:textColor="#F5F5F5"
             android:text="@string/already_registered"/>
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_height="35dp"
             android:paddingLeft="10dp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
+            android:textColor="#F5F5F5"
             android:text="Login"/>
 
     </LinearLayout>

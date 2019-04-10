@@ -28,7 +28,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:paddingLeft="2dp"
-            android:background="#ffffff"
+            android:background="#F5F5F5"
             android:drawableLeft="@drawable/username"
             android:hint="@string/username"/>
 
@@ -37,7 +37,7 @@
             android:layout_width="190dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="#ffffff"
+            android:background="#F5F5F5"
             android:drawableLeft="@drawable/password"
             android:inputType="textPassword"
             android:hint="@string/password"/>
@@ -48,7 +48,7 @@
         android:layout_width="190dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-
+        android:background="#ffffff"
         android:text="@string/login"/>
 
     <LinearLayout
