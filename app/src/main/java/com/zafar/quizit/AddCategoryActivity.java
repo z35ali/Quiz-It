@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddCategoryActivity extends AppCompatActivity {
 
 
@@ -31,11 +34,10 @@ public class AddCategoryActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addIntent = new Intent(AddCategoryActivity.this,AddCategoryActivity.class);
+
                 category = new Category(addCategory.getText().toString().trim());
                 addCategory(category);
-                finish();
-                startActivity(addIntent);
+
             }
         });
 
@@ -44,7 +46,24 @@ public class AddCategoryActivity extends AppCompatActivity {
     }
 
     private void addCategory(Category category){
-        QuizDbHelper.getInstance(this).addCategory((category));
+        boolean categoryExists = false;
+        List<Category> categoryList = new ArrayList<>();
+        categoryList = QuizDbHelper.getInstance(this).getAllCategories();
+        for (Category currentCategory: categoryList) {
+            if(currentCategory.getName().equals(category.getName())){
+               categoryExists = true;
+            }
+        }
+
+        if(categoryExists){
+            Toast.makeText(this, "Current Category Already Exists", Toast.LENGTH_SHORT).show();
+        }else {
+            QuizDbHelper.getInstance(this).addCategory((category));
+            Toast.makeText(this, "Category Added", Toast.LENGTH_SHORT).show();
+            Intent addIntent = new Intent(AddCategoryActivity.this,AddCategoryActivity.class);
+            finish();
+            startActivity(addIntent);
+        }
     }
 
     @Override
