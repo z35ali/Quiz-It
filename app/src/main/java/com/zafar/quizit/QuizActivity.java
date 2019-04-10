@@ -146,6 +146,9 @@ public class QuizActivity extends AppCompatActivity {
         rb2.setTextColor(textColorDefaultRb);
         rb3.setTextColor(textColorDefaultRb);
         rbGroup.clearCheck();
+        rb1.setEnabled(true);
+        rb2.setEnabled(true);
+        rb3.setEnabled(true);
 
         if(questionCounter < questionCountTotal){
           currentQuestion = questionList.get(questionCounter);
@@ -228,7 +231,9 @@ public class QuizActivity extends AppCompatActivity {
         rb1.setTextColor(Color.RED);
         rb2.setTextColor(Color.RED);
         rb3.setTextColor(Color.RED);
-
+        rb1.setEnabled(false);
+        rb2.setEnabled(false);
+        rb3.setEnabled(false);
         switch(currentQuestion.getAnswerNr()){
             case 1:
                 rb1.setTextColor(Color.parseColor("#1177c9"));
