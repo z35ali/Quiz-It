@@ -108,34 +108,46 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.insert(CategoriesTable.TABLE_NAME, null, cv);
     }
     private void fillQuestionsTable() {
-        Question q1 = new Question("Programming, Easy: A is correct",
-                "A", "B", "C", 1,
+        Question q1 = new Question("Programming, Easy: What language is used to style websites?",
+                "HTML", "C", "CSS", 3,
                 Question.DIFFICULTY_EASY, Category.PROGRAMMING);
         insertQuestion(q1);
-        Question q2 = new Question("Science, Medium: B is correct",
-                "A", "B", "C", 2,
+        Question q2 = new Question("Science, Medium: What is the element with atomic number of 6?",
+                "Oxygen", "Carbon", "Hydrogen", 2,
                 Question.DIFFICULTY_MEDIUM, Category.SCIENCE);
         insertQuestion(q2);
-        Question q3 = new Question("Science, Easy: C is correct",
-                "A", "B", "C", 3,
+        Question q3 = new Question("Science, Easy: What are the structures that orbit a nucleus?",
+                "Proton", "Atoms", "Electrons", 3,
                 Question.DIFFICULTY_EASY, Category.SCIENCE);
         insertQuestion(q3);
-        Question q4 = new Question("Superheroes, Hard: C is correct",
-                "A", "B", "C", 3,
+        Question q4 = new Question("Superheroes, Hard: What is the name of Thor's original hammer?",
+                "Billy", "Mijinerr", "Mjolnir", 3,
                 Question.DIFFICULTY_HARD, Category.SUPERHEROES);
         insertQuestion(q4);
-        Question q5 = new Question("Math, Medium: B is correct",
-                "A", "B", "C", 2,
+        Question q5 = new Question("Math, Medium: What is the derivative of e^x",
+                "1", "e^x", "x^e", 2,
                 Question.DIFFICULTY_MEDIUM, Category.MATH);
         insertQuestion(q5);
-        Question q6 = new Question("Programming, Hard: A is correct",
-                "A", "B", "C", 1,
+        Question q6 = new Question("Programming, Hard: Which of the following are blockchain platform?",
+                "Multichain", "Softchain", "Cryptochain", 1,
                 Question.DIFFICULTY_HARD, Category.PROGRAMMING);
         insertQuestion(q6);
-        Question q7 = new Question("Superheroes, Hard: C is correct",
-                "A", "B", "C", 3,
+        Question q7 = new Question("Superheroes, Hard: What is Captain America's Shield made out of in the movies?",
+                "Adamantium", "Iron", "Vibranium", 3,
                 Question.DIFFICULTY_HARD, Category.SUPERHEROES);
         insertQuestion(q7);
+        Question q8 = new Question("Superheroes, Easy: What is the Super Villain with half his face burnt?",
+                "Double-Trouble", "Two-Face", "Split-face", 2,
+                Question.DIFFICULTY_EASY, Category.SUPERHEROES);
+        insertQuestion(q8);
+        Question q9 = new Question("Math, Easy: What is 5*6",
+                "40", "70", "30", 3,
+                Question.DIFFICULTY_EASY, Category.MATH);
+        insertQuestion(q9);
+        Question q10 = new Question("Superheroes, Easy: What is Batman's real first name?",
+                "Bart", "Bruce", "Bob", 2,
+                Question.DIFFICULTY_EASY, Category.SUPERHEROES);
+        insertQuestion(q10);
 
       /* TESTS
         Question q8 = new Question("UNKNOWN, Hard: C is correct",
