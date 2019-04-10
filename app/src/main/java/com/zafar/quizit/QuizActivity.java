@@ -231,15 +231,15 @@ public class QuizActivity extends AppCompatActivity {
 
         switch(currentQuestion.getAnswerNr()){
             case 1:
-                rb1.setTextColor(Color.GREEN);
+                rb1.setTextColor(Color.parseColor("#1177c9"));
                 textViewQuestion.setText("Answer 1 is correct");
                 break;
             case 2:
-                rb2.setTextColor(Color.GREEN);
+                rb2.setTextColor(Color.parseColor("#1177c9"));
                 textViewQuestion.setText("Answer 2 is correct");
                 break;
             case 3:
-                rb3.setTextColor(Color.GREEN);
+                rb3.setTextColor(Color.parseColor("#1177c9"));
                 textViewQuestion.setText("Answer 3 is correct");
                 break;
 
