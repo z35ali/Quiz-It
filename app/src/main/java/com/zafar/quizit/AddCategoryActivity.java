@@ -35,13 +35,26 @@ public class AddCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                category = new Category(addCategory.getText().toString().trim());
-                addCategory(category);
+                if(allFieldsFilled()) {
+                    category = new Category(addCategory.getText().toString().trim());
+                    addCategory(category);
+                }
 
             }
         });
 
 
+
+    }
+
+    private boolean allFieldsFilled(){
+
+        if(addCategory.getText().toString().equals("")){
+            Toast.makeText(this, "Please Fill The Category Field", Toast.LENGTH_SHORT).show();
+            return false;
+        }else{
+            return true;
+        }
 
     }
 

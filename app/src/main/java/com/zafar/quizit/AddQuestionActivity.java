@@ -28,7 +28,8 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     Button submitButton;
     Question question;
-
+    
+    String difficulty;
     private long backPressedTime;
 
 
@@ -55,16 +56,19 @@ public class AddQuestionActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addIntent = new Intent(AddQuestionActivity.this,AddQuestionActivity.class);
-                question = new Question(addQuestion_question.getText().toString(),addQuestion_op1.getText().toString(),addQuestion_op2.getText().toString(),addQuestion_op3.getText().toString(),Integer.parseInt(addQuestion_ansnr.getText().toString()),addQuestion_diff.getText().toString(),Integer.parseInt(addQuestion_ID.getText().toString()));
 
 
-                Add_Question(question);
+                if(allFieldsFilled()){
 
+                    String difficultyFirstLetter = addQuestion_diff.getText().toString().trim().toUpperCase().charAt(0)+"";
 
+                    String difficultyRest = addQuestion_diff.getText().toString().trim().substring(1,addQuestion_diff.getText().toString().trim().length());
+                    difficulty = difficultyFirstLetter + difficultyRest;
+                    question = new Question(addQuestion_question.getText().toString(),addQuestion_op1.getText().toString(),addQuestion_op2.getText().toString(),addQuestion_op3.getText().toString(),Integer.parseInt(addQuestion_ansnr.getText().toString()),difficulty,Integer.parseInt(addQuestion_ID.getText().toString()));
 
-                finish();
-                startActivity(addIntent);
+                    Add_Question(question);
+                }
+
             }
         });
 
@@ -72,10 +76,61 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     }
 
-    private void Add_Question(Question question){
-        QuizDbHelper.getInstance(this).addQuestion((question));
+    private boolean allFieldsFilled(){
+
+        if(addQuestion_ID.getText().toString().equals("") || addQuestion_diff.getText().toString().equals("") || addQuestion_ansnr.getText().toString().equals("") || addQuestion_question.getText().toString().equals("") || addQuestion_op1.getText().toString().equals("") || addQuestion_op2.getText().toString().equals("") || addQuestion_op3.getText().toString().equals("")){
+            Toast.makeText(this, "Please Fill All Fields", Toast.LENGTH_SHORT).show();
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    private void Add_Question(Question question) {
+        boolean invalidAnswernr = false;
+        boolean invalidDiff = false;
+        boolean invalidCategoryID = false;
 
 
+        if (Integer.parseInt(addQuestion_ansnr.getText().toString())>3 || Integer.parseInt(addQuestion_ansnr.getText().toString())<1){
+            invalidAnswernr = true;
+        }
+
+        if (!((difficulty.equals(Question.DIFFICULTY_EASY)) || (difficulty.equals(Question.DIFFICULTY_MEDIUM)) || (difficulty.equals(Question.DIFFICULTY_HARD)))){
+            invalidDiff = true;
+        }
+
+        if (Integer.parseInt(addQuestion_ID.getText().toString())>QuizDbHelper.getInstance(this).getAllCategories().size() || Integer.parseInt(addQuestion_ID.getText().toString())==0){
+            invalidCategoryID = true;
+        }
+
+
+
+        if (invalidAnswernr) {
+            Toast.makeText(this, "Invalid Answer Number", Toast.LENGTH_SHORT).show();
+        }else
+
+        if (invalidDiff) {
+            Toast.makeText(this, "Invalid Difficulty", Toast.LENGTH_SHORT).show();
+        }else
+
+        if (invalidCategoryID) {
+            Toast.makeText(this, "Invalid Category ID", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        else {
+
+            Toast.makeText(this, "Question Added", Toast.LENGTH_SHORT).show();
+            QuizDbHelper.getInstance(this).addQuestion((question));
+            Intent addIntent = new Intent(AddQuestionActivity.this, AddQuestionActivity.class);
+            finish();
+            startActivity(addIntent);
+
+
+        }
     }
 
     @Override

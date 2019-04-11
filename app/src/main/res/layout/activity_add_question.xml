@@ -76,8 +76,9 @@
 
             android:background="#F5F5F5"
             android:drawableLeft="@drawable/add"
-            android:paddingLeft="2dp"
-            android:hint="@string/question_ansnr"/>
+            android:hint="@string/question_ansnr"
+            android:inputType="number"
+            android:paddingLeft="2dp" />
 
         <EditText
             android:id="@+id/addQuestion_diff"
@@ -98,8 +99,9 @@
 
             android:background="#F5F5F5"
             android:drawableLeft="@drawable/add"
-            android:paddingLeft="2dp"
-            android:hint="@string/question_ID"/>
+            android:hint="@string/question_ID"
+            android:inputType="number"
+            android:paddingLeft="2dp" />
 
         <TextView
             android:id="@+id/allCategoryID"
