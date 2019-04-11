@@ -37,10 +37,10 @@ public class AddCategoryActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(allFieldsFilled()) {
-                    String difficultyFirstLetter = addCategory.getText().toString().trim().toUpperCase().charAt(0)+"";
+                    String categoryFirstLetter = addCategory.getText().toString().trim().toUpperCase().charAt(0)+"";
 
-                    String difficultyRest = addCategory.getText().toString().trim().substring(1,addCategory.getText().toString().trim().length());
-                    categoryFormatted = difficultyFirstLetter + difficultyRest;
+                    String categoryRest = addCategory.getText().toString().toLowerCase().trim().substring(1,addCategory.getText().toString().trim().length());
+                    categoryFormatted = categoryFirstLetter + categoryRest;
                     category = new Category(categoryFormatted);
 
                     addCategory(category);

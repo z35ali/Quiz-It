@@ -62,7 +62,7 @@ public class AddQuestionActivity extends AppCompatActivity {
 
                     String difficultyFirstLetter = addQuestion_diff.getText().toString().trim().toUpperCase().charAt(0)+"";
 
-                    String difficultyRest = addQuestion_diff.getText().toString().trim().substring(1,addQuestion_diff.getText().toString().trim().length());
+                    String difficultyRest = addQuestion_diff.getText().toString().toLowerCase().trim().substring(1,addQuestion_diff.getText().toString().trim().length());
                     difficulty = difficultyFirstLetter + difficultyRest;
                     question = new Question(addQuestion_question.getText().toString(),addQuestion_op1.getText().toString(),addQuestion_op2.getText().toString(),addQuestion_op3.getText().toString(),Integer.parseInt(addQuestion_ansnr.getText().toString()),difficulty,Integer.parseInt(addQuestion_ID.getText().toString()));
 
