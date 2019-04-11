@@ -74,7 +74,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
+                    if(user.equals("")||(pwd.equals(""))){
+                        Toast.makeText(LoginActivity.this,"Please Fill In All The Fields",Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(LoginActivity.this,"Invalid Username or Password",Toast.LENGTH_SHORT).show();
+
+                    }
+
                 }
             }
         });
