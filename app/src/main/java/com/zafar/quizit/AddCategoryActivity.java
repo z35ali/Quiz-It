@@ -18,6 +18,7 @@ public class AddCategoryActivity extends AppCompatActivity {
     TextView addCategory;
     Button submitButton;
     Category category;
+    String categoryFormatted;
     private long backPressedTime;
 
 
@@ -36,7 +37,12 @@ public class AddCategoryActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(allFieldsFilled()) {
-                    category = new Category(addCategory.getText().toString().trim());
+                    String difficultyFirstLetter = addCategory.getText().toString().trim().toUpperCase().charAt(0)+"";
+
+                    String difficultyRest = addCategory.getText().toString().trim().substring(1,addCategory.getText().toString().trim().length());
+                    categoryFormatted = difficultyFirstLetter + difficultyRest;
+                    category = new Category(categoryFormatted);
+
                     addCategory(category);
                 }
 
