@@ -45,20 +45,20 @@ public class RegisterActivity extends AppCompatActivity {
                 String pwd = mTextPassword.getText().toString().trim();
                 String cnf_pwd = mTextCnfPassword.getText().toString().trim();
 
-                if(pwd.equals(cnf_pwd)){
-                    long val = db.addUser(user,pwd);
-                    if(val > 0){
-                        Toast.makeText(RegisterActivity.this,"You Have Registered",Toast.LENGTH_SHORT).show();
-                        Intent moveToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
-                        startActivity(moveToLogin);
-                    }
-                    else{
-                        Toast.makeText(RegisterActivity.this,"User Already Exists",Toast.LENGTH_SHORT).show();
-                    }
+                if (!user.equals("") && !(pwd.equals(""))) {
+                    if (pwd.equals(cnf_pwd)) {
+                        long val = db.addUser(user, pwd);
+                        if (val > 0) {
+                            Toast.makeText(RegisterActivity.this, "You Have Registered", Toast.LENGTH_SHORT).show();
+                            Intent moveToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(moveToLogin);
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "User Already Exists", Toast.LENGTH_SHORT).show();
+                        }
 
-                }
-                else{
-                    Toast.makeText(RegisterActivity.this,"Password is not matching",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Password is not matching", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
