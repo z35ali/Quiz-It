@@ -3,6 +3,7 @@ package com.zafar.quizit;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,8 @@ public class AddQuestionActivity extends AppCompatActivity {
         addQuestion_ID = (EditText)findViewById(R.id.addQuestion_ID);
         submitButton = (Button)findViewById(R.id.button_submitAdd);
         allCategories = (TextView)findViewById(R.id.allCategoryID);
+
+        allCategories.setMovementMethod(new ScrollingMovementMethod());
 
         categoryList = QuizDbHelper.getInstance(this).getAllCategories();
 

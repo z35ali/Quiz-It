@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/container"
+    android:background="@color/colorBackground"
+    android:gravity="center_horizontal">
+
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/addQuestion_question"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:hint="@string/question"
+            android:paddingLeft="2dp" />
+
+        <EditText
+            android:id="@+id/addQuestion_op1"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:paddingLeft="2dp"
+            android:hint="@string/question_op1"/>
+
+        <EditText
+            android:id="@+id/addQuestion_op2"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:paddingLeft="2dp"
+            android:hint="@string/question_op2"/>
+        <EditText
+            android:id="@+id/addQuestion_op3"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:paddingLeft="2dp"
+            android:hint="@string/question_op3"/>
+
+        <EditText
+            android:id="@+id/addQuestion_ansnr"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:hint="@string/question_ansnr"
+            android:inputType="number"
+            android:paddingLeft="2dp" />
+
+        <EditText
+            android:id="@+id/addQuestion_diff"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:paddingLeft="2dp"
+            android:hint="@string/question_diff"/>
+
+        <EditText
+            android:id="@+id/addQuestion_ID"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+
+            android:background="#F5F5F5"
+            android:drawableLeft="@drawable/add"
+            android:hint="@string/question_ID"
+            android:inputType="number"
+            android:paddingLeft="2dp" />
+
+        <TextView
+            android:id="@+id/allCategoryID"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="#F5F5F5"
+            android:paddingLeft="2dp"
+            android:textColor="#000000"
+            android:scrollbars="vertical"
+
+            />
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_submitAdd"
+
+        android:layout_width="190dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+    android:background="#ffffff"
+        android:text="@string/submit"/>
+</LinearLayout>
